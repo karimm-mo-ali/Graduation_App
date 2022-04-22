@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graduation/View/screens/home_screen.dart';
-import '../../../View/widgets/reusable_component.dart';
+import '../../../helpers/myApplication.dart';
 import '../../Models/user_model.dart';
 import '../../Reposetories/auth.dart';
 import 'login_state.dart';
@@ -19,7 +19,7 @@ class LoginCubit extends Cubit<LoginState> {
       auth.login(email: email, pass: pass, rememberMe: remember).then((value) {
         if (value != null) {
           emit(LoginLoaded(value));
-          navigateAndFinish(context!, Home());
+          MyApplication.navigateToReplace(context!, Home());
         } else {
           emit(LoginError());
         }

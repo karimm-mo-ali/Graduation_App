@@ -1,4 +1,3 @@
-import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter_graduation/View/screens/aboutUs_screen.dart';
 
 import 'package:flutter_graduation/View/screens/setting_screen.dart';
@@ -48,13 +47,13 @@ class Home extends StatelessWidget {
               ),
             ],
           ),
-          body: ConditionalBuilder(
-            condition: true,
-            builder: (context) => cubit.screens[cubit.currentIndex],
-            fallback: (context) => const Center(
-              child: CircularProgressIndicator(),
-            ),
-          ),
+          // body: ConditionalBuilder(
+          //   condition: true,
+          //   builder: (context) => cubit.screens[cubit.currentIndex],
+          //   fallback: (context) => const Center(
+          //     child: CircularProgressIndicator(),
+          //   ),
+          // ),
           // drawer: DrawerWidget(),
           // drawer: Drawer(
           //   child: ListView(

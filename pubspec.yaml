@@ -40,7 +40,7 @@ dependencies:
   lite_rolling_switch: ^0.1.1
   flutter_switch: ^0.3.2
   switcher_button: ^0.0.4
-  conditional_builder:
+
   bloc: ^8.0.2
   auto_size_text: ^3.0.0
   flutter_bloc: ^8.0.1

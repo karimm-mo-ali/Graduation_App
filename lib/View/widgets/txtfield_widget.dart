@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../Style/Colors.dart';
 import '../../app/validations.dart';
 
@@ -11,7 +12,6 @@ class TxtFieldWidget extends StatefulWidget {
   final bool isHasNextFocus;
   final Widget? suffixIcon;
   final String? pass;
-  final String? type;
   final FocusNode? focusNode;
   final GlobalKey<FormState>? formKey;
 
@@ -21,7 +21,6 @@ class TxtFieldWidget extends StatefulWidget {
       required this.textEditingController,
       required this.textInputType,
       required this.isHasNextFocus,
-      this.type,
       this.suffixIcon,
       this.pass,
       this.focusNode,
@@ -51,23 +50,18 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
           },
           controller: widget.textEditingController,
           keyboardType: widget.textInputType,
-          obscureText: (widget.hintTxt == "Password" ||
-                  widget.hintTxt == "Confirm Password")
-              ? obscure
-              : false,
+          obscureText: (widget.hintTxt == "Password") ? obscure : false,
           textInputAction: (widget.isHasNextFocus == true)
               ? TextInputAction.next
               : TextInputAction.done,
           enableInteractiveSelection: true,
           focusNode: focusNode,
-          onFieldSubmitted: (_) {
-            if (widget.hintTxt == "Password" ||
-                widget.hintTxt == "Confirm Password") {
-              focusNode.nextFocus();
-            } else {
-              FocusScope.of(context).requestFocus(widget.focusNode);
-            }
-          },
+          onFieldSubmitted:
+              (widget.hintTxt == "Password" && widget.isHasNextFocus == true)
+                  ? (_) => focusNode.nextFocus()
+                  : (_) {
+                      FocusScope.of(context).requestFocus(widget.focusNode);
+                    },
           obscuringCharacter: "*",
           maxLength: (widget.hintTxt == " " &&
                   widget.textInputType != TextInputType.number)
@@ -96,8 +90,7 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide:
                     BorderSide(color: Constants.primaryAppColor, width: 0.7)),
-            suffixIcon: (widget.hintTxt == "Password" ||
-                    widget.hintTxt == "Confirm Password")
+            suffixIcon: (widget.hintTxt == "Password")
                 ? InkWell(
                     onTap: () {
                       onPressEye();
@@ -108,18 +101,16 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                              bottom: 8, right: 8, left: 8),
+                              bottom: 13, right: 10, left: 8),
                           child: !obscure
-                              ? Icon(
-                                  CupertinoIcons.eye,
-                                  color: Colors.grey.withOpacity(0.7),
-                                  size: 25,
-                                )
-                              : Icon(
-                                  CupertinoIcons.eye_slash,
-                                  color: Colors.grey.withOpacity(0.7),
-                                  size: 25.0,
-                                ),
+                              ? SvgPicture.asset("assets/eye.svg",
+                                  height: 20.0,
+                                  width: 20.0,
+                                  fit: BoxFit.scaleDown)
+                              : SvgPicture.asset("assets/eyeee.svg",
+                                  height: 20.0,
+                                  width: 20.0,
+                                  fit: BoxFit.scaleDown),
                         ),
                       ],
                     ))
@@ -137,9 +128,14 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
               String? validationString =
                   Validations.validatePassword(value!, context);
               return validationString;
-            } else if (widget.hintTxt == "Password Confirmation") {
-              String? validationString = Validations.validateconPassword(
-                  widget.pass!, context, value!);
+            } else if (widget.hintTxt == "First Name" ||
+                widget.hintTxt == "Last Name") {
+              String? validationString =
+                  Validations.validateName(value!, context);
+              return validationString;
+            } else if (widget.hintTxt == "Phone Number") {
+              String? validationString =
+                  Validations.validatePhone(value!, context);
               return validationString;
             } else {
               String? validationString =
@@ -149,84 +145,6 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
           },
         ),
         SizedBox(height: size.height * 0.015),
-        widget.type == "signup"
-            ? Visibility(
-                visible: edited,
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Column(
-                    children: [
-                      Container(
-                        width: widget.textEditingController.text
-                                    .toString()
-                                    .length <
-                                6
-                            ? 50
-                            : widget.textEditingController.text
-                                        .toString()
-                                        .length <
-                                    8
-                                ? 70
-                                : 100,
-                        height: 3,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(2.0),
-                          color: widget.textEditingController.text
-                                  .toString()
-                                  .isEmpty
-                              ? Colors.white
-                              : widget.textEditingController.text
-                                          .toString()
-                                          .length <
-                                      6
-                                  ? const Color(0xffe44544)
-                                  : widget.textEditingController.text
-                                              .toString()
-                                              .length <
-                                          8
-                                      ? const Color(0xffEB8115)
-                                      : const Color(0xff80AF50),
-                        ),
-                      ),
-                      SizedBox(
-                        width:
-                            widget.textEditingController.text.toString().isEmpty
-                                ? 0
-                                : widget.textEditingController.text
-                                            .toString()
-                                            .length <
-                                        6
-                                    ? 50
-                                    : widget.textEditingController.text
-                                                .toString()
-                                                .length <
-                                            8
-                                        ? 70
-                                        : 100,
-                        child: Center(
-                            child: Text(
-                          widget.textEditingController.text.toString().isEmpty
-                              ? ""
-                              : widget.textEditingController.text
-                                          .toString()
-                                          .length <
-                                      6
-                                  ? "weak"
-                                  : widget.textEditingController.text
-                                              .toString()
-                                              .length <
-                                          8
-                                      ? "meduim"
-                                      : "strong",
-                          style:
-                              TextStyle(color: Constants.HINT.withOpacity(0.5)),
-                        )),
-                      )
-                    ],
-                  ),
-                ),
-              )
-            : const SizedBox()
       ],
     );
   }

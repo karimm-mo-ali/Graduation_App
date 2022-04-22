@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../Data/Cubit/signUp_cubit/signUP_cubit.dart';
 import '../../Data/Cubit/signUp_cubit/signUp_state.dart';
 import '../../Style/Colors.dart';
+import '../../helpers/myApplication.dart';
 import '../widgets/btn_widget.dart';
 import '../widgets/txtfield_widget.dart';
 import 'login_screen.dart';
@@ -51,24 +53,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       return;
     }
   }
-  // bool matching = false;
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   // confirmPassTextEditingController.addListener(() {
-  //   //   setState(() {
-  //   //     matching = passTextEditingController.text.toString().trim() ==
-  //   //         confirmPassTextEditingController.text.toString().trim();
-  //   //   });
-  //   // });
-  //   // passTextEditingController.addListener(() {
-  //   //   setState(() {
-  //   //     matching = passTextEditingController.text.toString().trim() ==
-  //   //         confirmPassTextEditingController.text.toString().trim();
-  //   //   });
-  //   // });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -237,7 +221,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           textInputType: TextInputType.visiblePassword,
                           textEditingController: passTextEditingController,
                           isHasNextFocus: false,
-                          type: "signup",
                         ),
                         SizedBox(
                           height: size.height * 0.015,
@@ -255,57 +238,52 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 txt: "Sign Up",
                                 color: Constants.primaryAppColor,
                                 onClicked: () {
-                                  BlocProvider.of<SignUpCubit>(context).signUp(
-                                      firstName:
-                                          firstNameTextEditingController.text,
-                                      lastName:
-                                          lastNameTextEditingController.text,
-                                      email: emailTextEditingController.text,
-                                      phone: phoneTextEditingController.text,
-                                      address:
-                                          addressTextEditingController.text,
-                                      password: passTextEditingController.text,
-                                      gender: _selectedValue,
-                                      photo: File(
-                                          _image != null ? _image!.path : ""),
-                                      context: context);
-                                  // MyApplication.checkConnection().then((value) {
-                                  //   if (_formKey.currentState!.validate()) {
-                                  //     if (value == true) {
-                                  //       BlocProvider.of<SignUpCubit>(context).SignUp(
-                                  //           email: emailTextEditingController.text,
-                                  //           pass:
-                                  //               passwordTextEditingController.text,
-                                  //           remember: check,
-                                  //           context: context);
-                                  //     } else {
-                                  //       Fluttertoast.showToast(
-                                  //           msg: 'no Internet',
-                                  //           toastLength: Toast.LENGTH_SHORT,
-                                  //           gravity: ToastGravity.SNACKBAR,
-                                  //           timeInSecForIosWeb: 3,
-                                  //           backgroundColor:
-                                  //               Constants.primaryAppColor,
-                                  //           textColor: Constants.white,
-                                  //           fontSize: 16.0);
-                                  //     }
-                                  //   }
-                                  // });
+                                  MyApplication.checkConnection().then((value) {
+                                    if (_formKey.currentState!.validate()) {
+                                      if (value == true) {
+                                        BlocProvider.of<SignUpCubit>(context)
+                                            .signUp(
+                                                firstName:
+                                                    firstNameTextEditingController
+                                                        .text,
+                                                lastName:
+                                                    lastNameTextEditingController
+                                                        .text,
+                                                email:
+                                                    emailTextEditingController
+                                                        .text,
+                                                phone:
+                                                    phoneTextEditingController
+                                                        .text,
+                                                address:
+                                                    addressTextEditingController
+                                                        .text,
+                                                password:
+                                                    passTextEditingController
+                                                        .text,
+                                                gender: _selectedValue,
+                                                photo: File(_image != null
+                                                    ? _image!.path
+                                                    : ""),
+                                                context: context);
+                                      } else {
+                                        Fluttertoast.showToast(
+                                            msg: 'no Internet',
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.SNACKBAR,
+                                            timeInSecForIosWeb: 3,
+                                            backgroundColor:
+                                                Constants.primaryAppColor,
+                                            textColor: Constants.white,
+                                            fontSize: 16.0);
+                                      }
+                                    }
+                                  });
                                 },
                               );
                             }
                           }),
                         ),
-                        // BtnWidget(
-                        //   txt: "Sign Up",
-                        //   color: Constants.primaryAppColor,
-                        //   onClicked: () {
-                        //     Navigator.push(context,
-                        //         MaterialPageRoute(builder: (context) {
-                        //       return Home();
-                        //     }));
-                        //   },
-                        // ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -323,11 +301,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     TextSpan(
                                       text: "Sign In",
                                       recognizer: TapGestureRecognizer()
-                                        ..onTap = () => Navigator.push(context,
-                                                MaterialPageRoute(
-                                                    builder: (context) {
-                                              return const LoginScreen();
-                                            })),
+                                        ..onTap = () =>
+                                            MyApplication.navigateToReplace(
+                                                context, LoginScreen()),
                                       style: TextStyle(
                                           color: Constants.primaryAppColor,
                                           fontSize: 12,

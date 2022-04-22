@@ -1,10 +1,10 @@
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graduation/Data/Cubit/signUp_cubit/signUp_state.dart';
 import 'package:flutter_graduation/View/screens/home_screen.dart';
 import '../../../View/widgets/reusable_component.dart';
+import '../../../helpers/myApplication.dart';
 import '../../Models/signUp_model.dart';
 import '../../Reposetories/auth.dart';
 
@@ -36,7 +36,7 @@ class SignUpCubit extends Cubit<SignUpState> {
           .then((value) {
         if (value != null) {
           emit(SignUpLoaded(value));
-          navigateAndFinish(context!, Home());
+          MyApplication.navigateToReplace(context!, Home());
         } else {
           emit(SignUpError());
         }

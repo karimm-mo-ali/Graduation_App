@@ -11,6 +11,7 @@ import '../../Style/Colors.dart';
 import '../../helpers/myApplication.dart';
 import '../widgets/btn_widget.dart';
 import '../widgets/txtfield_widget.dart';
+import 'forget_pass_screen.dart';
 import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -96,7 +97,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           textInputType: TextInputType.visiblePassword,
                           textEditingController: passwordTextEditingController,
                           isHasNextFocus: false,
-                          type: "signup",
                         ),
                       ],
                     ),
@@ -104,7 +104,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                       alignment: AlignmentDirectional.bottomEnd,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () => MyApplication.navigateTo(
+                            context, ForgetPassScreen()),
                         child: Text("Forgot Password?",
                             style: TextStyle(
                                 color:
@@ -150,33 +151,28 @@ class _LoginScreenState extends State<LoginScreen> {
                             txt: "Login",
                             color: Constants.primaryAppColor,
                             onClicked: () {
-                              BlocProvider.of<LoginCubit>(context).login(
-                                  email: emailTextEditingController.text,
-                                  pass: passwordTextEditingController.text,
-                                  remember: check,
-                                  context: context);
-                              // MyApplication.checkConnection().then((value) {
-                              //   if (_formKey.currentState!.validate()) {
-                              //     if (value == true) {
-                              //       BlocProvider.of<LoginCubit>(context).login(
-                              //           email: emailTextEditingController.text,
-                              //           pass:
-                              //               passwordTextEditingController.text,
-                              //           remember: check,
-                              //           context: context);
-                              //     } else {
-                              //       Fluttertoast.showToast(
-                              //           msg: 'no Internet',
-                              //           toastLength: Toast.LENGTH_SHORT,
-                              //           gravity: ToastGravity.SNACKBAR,
-                              //           timeInSecForIosWeb: 3,
-                              //           backgroundColor:
-                              //               Constants.primaryAppColor,
-                              //           textColor: Constants.white,
-                              //           fontSize: 16.0);
-                              //     }
-                              //   }
-                              // });
+                              MyApplication.checkConnection().then((value) {
+                                if (_formKey.currentState!.validate()) {
+                                  if (value == true) {
+                                    BlocProvider.of<LoginCubit>(context).login(
+                                        email: emailTextEditingController.text,
+                                        pass:
+                                            passwordTextEditingController.text,
+                                        remember: check,
+                                        context: context);
+                                  } else {
+                                    Fluttertoast.showToast(
+                                        msg: 'no Internet',
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.SNACKBAR,
+                                        timeInSecForIosWeb: 3,
+                                        backgroundColor:
+                                            Constants.primaryAppColor,
+                                        textColor: Constants.white,
+                                        fontSize: 16.0);
+                                  }
+                                }
+                              });
                             },
                           );
                         }
@@ -195,10 +191,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextSpan(
                               text: "Sign Up",
                               recognizer: TapGestureRecognizer()
-                                ..onTap = () => Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return SignUpScreen();
-                                    })),
+                                ..onTap = () => MyApplication.navigateToReplace(
+                                    context, SignUpScreen()),
                               style: TextStyle(
                                   color: Constants.primaryAppColor,
                                   fontSize: 12,

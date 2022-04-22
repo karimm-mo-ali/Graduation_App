@@ -14,12 +14,12 @@ class MyApplication {
     }
   }
 
-  // static void navigateToReplace(BuildContext context, Widget page) async {
-  //   Navigator.of(context)
-  //       .pushReplacement(MaterialPageRoute(builder: (context) => page));
-  // }
-  //
-  // static void navigateTo(BuildContext context, Widget page) async {
-  //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
-  // }
+  static void navigateToReplace(BuildContext context, Widget page) async {
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => page));
+  }
+
+  static void navigateTo(BuildContext context, Widget page) async {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
+  }
 }
