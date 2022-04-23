@@ -17,28 +17,40 @@ class Food extends StatefulWidget {
 
 class _FoodState extends State<Food> {
 
-  bool check1 =false;
-  bool check2 = false;
-  //List Gender
-  String? genderChoose;
-  List <String>listGender=[
-    'Male','Female','Prefer Not Answer',
+
+  //List type
+  String? type;
+  List <String>listType=[
+    'Cooked','Uncooked',
   ];
+
+
+  //food source
+  String? foodSource;
+  List <String> listFoodSource=[
+    'Restaurant', 'Weddings','Restaurant Customer','The House','Other'
+  ];
+
   //List Food
-  String? foodType;
-
-  List <String> listFood=[
-    'Cooked','Un Cooked','Restaurant','Sweets','Others'
-  ];
-  //List Quantity
-  String? quantityMeal;
-  String? quantityKilo;
-  List <String> listMeal=[
-    '1 Meal','2 Meal','3 Meal','4 Meal','5 Meal','More',
+  String? typeOfFood;
+  List <String> listTypeOfFood=[
+    'Rice','Pasta','Meat','Chicken','Fish','Flour','Sugar','Tea','Oil','Butter','Dessert'
+    ,'Legumes','Yamish Ramadan','Meals','Bakery','Vegetables and Fruits','Other',
   ];
 
-  List <String> listKilo=[
-    '1 Kilo','2 Kilo','3 Kilo','4 Kilo','5 Kilo','More',
+
+  //type of quantity
+  String? typeOfQuantity;
+  List <String> listTypeOfQuantity=[
+    'Kilo','Meal',
+  ];
+
+
+
+  //List Deliver
+  String? deliver;
+  List <String> listOfDeliver=[
+    'Send Delegate', 'Deliver to us',
   ];
   var titleController=TextEditingController();
   var dateController=TextEditingController();
@@ -77,7 +89,7 @@ class _FoodState extends State<Food> {
                 key: scaffoldKey,
                 appBar:AppBar(
                   title: const Text(
-                    'Food flutter_graduation',
+                    'Food Donation',
                     style: TextStyle(
                         fontSize: 23.0,
                         fontWeight: FontWeight.bold
@@ -93,7 +105,7 @@ class _FoodState extends State<Food> {
                         crossAxisAlignment: CrossAxisAlignment.start,
 
                         children: [
-                          //Gender
+                          //Type
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical:20.0
@@ -102,7 +114,7 @@ class _FoodState extends State<Food> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children:  [
                                 const Text(
-                                  'Gender',
+                                  'Type',
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
@@ -131,15 +143,15 @@ class _FoodState extends State<Food> {
                                         color:  AppCubit.get(context).isDark?Colors.white:Colors.black,
                                         fontSize: 18.0
                                     ),
-                                    value: genderChoose,
+                                    value: type,
                                     isExpanded: true,
                                     underline: const SizedBox(),
                                     onChanged: (newValue){
                                       setState(() {
-                                        genderChoose =newValue;
+                                        listType =newValue as List<String>;
                                       });
                                     },
-                                    items: listGender.map((valueItem){
+                                    items: listType.map((valueItem){
                                       return DropdownMenuItem(
                                           value: valueItem,
                                           child: Text(valueItem));
@@ -150,7 +162,10 @@ class _FoodState extends State<Food> {
                             ),
                           ),
                           defaultLine(context),
-                          //Food Type
+
+
+
+                          //Food Source
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical:20.0
@@ -159,7 +174,7 @@ class _FoodState extends State<Food> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
-                                  'Food Type',
+                                  'Food Source',
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
@@ -168,26 +183,102 @@ class _FoodState extends State<Food> {
                                 const SizedBox(
                                   height: 10.0,
                                 ),
-                                TextFormField(
-                                  controller: titleController,
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'Task Title',
-                                    prefix: Icon(
-                                      Icons.title,
-                                    ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 16,right: 16),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey,width: 1),
+                                    borderRadius: BorderRadius.circular(5.0),
                                   ),
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Should enter title';
-                                    }
-                                    return null;
-                                  },
+                                  child: DropdownButton<String>(
+                                    hint:Text(
+                                      'Select Item',
+                                      style: TextStyle(
+                                        color: AppCubit.get(context).isDark?Colors.white:Colors.black,
+                                      ),
+                                    ),
+                                    dropdownColor: Colors.grey,
+                                    icon: const Icon(Icons.arrow_drop_down),
+                                    iconSize: 36,
+                                    style:  TextStyle(
+                                        color:  AppCubit.get(context).isDark?Colors.white:Colors.black,
+                                        fontSize: 18.0
+                                    ),
+                                    value: foodSource,
+                                    isExpanded: true,
+                                    underline: const SizedBox(),
+                                    onChanged: (newValue){
+                                      setState(() {
+                                        listFoodSource =newValue as List<String>;
+                                      });
+                                    },
+                                    items: listFoodSource.map((valueItem){
+                                      return DropdownMenuItem(
+                                          value: valueItem,
+                                          child: Text(valueItem));
+                                    }).toList(),
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           defaultLine(context),
+
+                          //type of Food
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical:20.0
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Type of Food',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10.0,
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 16,right: 16),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey,width: 1),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  child: DropdownButton<String>(
+                                    hint:Text(
+                                      'Select Item',
+                                      style: TextStyle(
+                                        color: AppCubit.get(context).isDark?Colors.white:Colors.black,
+                                      ),
+                                    ),
+                                    dropdownColor: Colors.grey,
+                                    icon: const Icon(Icons.arrow_drop_down),
+                                    iconSize: 36,
+                                    style:  TextStyle(
+                                        color:  AppCubit.get(context).isDark?Colors.white:Colors.black,
+                                        fontSize: 18.0
+                                    ),
+                                    value: typeOfFood,
+                                    isExpanded: true,
+                                    underline: const SizedBox(),
+                                    onChanged: (newValue){
+                                      setState(() {
+                                        listTypeOfFood =newValue as List<String>;
+                                      });
+                                    },
+                                    items: listTypeOfFood.map((valueItem){
+                                      return DropdownMenuItem(
+                                          value: valueItem,
+                                          child: Text(valueItem));
+                                    }).toList(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                           //Expiration Date
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -208,17 +299,18 @@ class _FoodState extends State<Food> {
                                 ),
                                 TextFormField(
                                   controller: dateController,
-                                  validator: (value) {
+                                  validator: (String? value) {
                                     if (value!.isEmpty) {
                                       return 'Should enter date';
                                     }
                                     return null;
                                   },
-                                  decoration: const InputDecoration(
-                                    labelText: 'Task Date',
+                                  decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    prefix: Icon(
-                                      Icons.calendar_today,
+                                    labelText: 'Task Date',
+                                    prefixIcon: Icon(
+                                        Icons.calendar_today,
+
                                     ),
                                   ),
                                   onTap: () {
@@ -226,7 +318,7 @@ class _FoodState extends State<Food> {
                                         context: context,
                                         initialDate: DateTime.now(),
                                         firstDate: DateTime.now(),
-                                        lastDate: DateTime.parse('2222-10-10'))
+                                        lastDate: DateTime.parse('2100-10-10'))
                                         .then((value) {
                                       dateController.text =
                                           DateFormat.yMMMd().format(value!);
@@ -237,6 +329,7 @@ class _FoodState extends State<Food> {
                             ),
                           ),
                           defaultLine(context),
+
                           //Quantity
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -255,79 +348,127 @@ class _FoodState extends State<Food> {
                                 const SizedBox(
                                   height: 10.0,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 30.0),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-                                          child: Row(
-                                            children: [
-                                              Checkbox(
-                                                value:check1 ,
-                                                onChanged: (value){
-                                                  if(check2=false){
-                                                    check1=true;
-                                                    setState(() {
-                                                      check1=! value!;
-                                                    });
-                                                  }else{
-                                                    setState(() {
-                                                      check1= value!;
-                                                    });
-                                                  }
-                                                },
-                                                activeColor: Colors.green,
-                                                checkColor: AppCubit.get(context).isDark?Colors.white:Colors.black,
-                                              ),
-                                              const Text(
-                                                'Kilo',
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Container(
-                                          child: Row(
-                                            children: [
-                                              Checkbox(
-                                                value:check2,
-                                                onChanged: (value){
-                                                  if(check1=false){
-                                                    check2=true;
-                                                    setState(() {
-                                                      check2=! value!;
-                                                    });
-                                                  }else{
-                                                    setState(() {
-                                                      check2= value!;
-                                                    });
-                                                  }
-
-                                                }
-                                                ,
-                                                activeColor: Colors.green,
-                                                checkColor: AppCubit.get(context).isDark?Colors.white:Colors.black,
-                                              ),
-                                              const Text(
-                                                'Meal',
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                Container(
+                                  padding: const EdgeInsets.only(left: 16,right: 16),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey,width: 1),
+                                    borderRadius: BorderRadius.circular(5.0),
                                   ),
+                                  child: DropdownButton<String>(
+                                    hint:Text(
+                                      'Select Item',
+                                      style: TextStyle(
+                                        color: AppCubit.get(context).isDark?Colors.white:Colors.black,
+                                      ),
+                                    ),
+                                    dropdownColor: Colors.grey,
+                                    icon: const Icon(Icons.arrow_drop_down),
+                                    iconSize: 36,
+                                    style:  TextStyle(
+                                        color:  AppCubit.get(context).isDark?Colors.white:Colors.black,
+                                        fontSize: 18.0
+                                    ),
+                                    value: typeOfQuantity,
+                                    isExpanded: true,
+                                    underline: const SizedBox(),
+                                    onChanged: (newValue){
+                                      setState(() {
+                                        listTypeOfQuantity =newValue as List<String>;
+                                      });
+                                    },
+                                    items: listTypeOfQuantity.map((valueItem){
+                                      return DropdownMenuItem(
+                                          value: valueItem,
+                                          child: Text(valueItem));
+                                    }).toList(),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                TextFormField(
+                                  controller: titleController,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Quantity',
+
+                                    prefixIcon: Icon(
+                                        Icons.production_quantity_limits,
+
+                                    ),
+                                  ),
+                                  validator: (String? value) {
+                                    if (value!.isEmpty) {
+                                      return 'Should enter title';
+                                    }
+                                    return null;
+                                  },
+                                ),
+
+                              ],
+                            ),
+                          ),
+                          defaultLine(context),
+
+                          //location
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical:20.0
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Location',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10.0,
+                                ),
+                                TextFormField(
+                                  controller: titleController,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Location',
+
+                                    prefixIcon: Icon(
+                                      Icons.location_on,
+
+                                    ),
+                                  ),
+                                  validator: (String? value) {
+                                    if (value!.isEmpty) {
+                                      return 'Location Needed';
+                                    }
+                                    return null;
+                                  },
+                                ),
+
+                              ],
+                            ),
+                          ),
+                          defaultLine(context),
+
+                          //Buttons
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical:20.0
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children:  [
+                                const Text(
+                                  'Deliver',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10.0,
                                 ),
                                 Container(
                                   padding: const EdgeInsets.only(left: 16,right: 16),
@@ -336,52 +477,37 @@ class _FoodState extends State<Food> {
                                     borderRadius: BorderRadius.circular(5.0),
                                   ),
                                   child: DropdownButton<String>(
-                                      hint:Text(
-                                        check1 ?'Select Number Of Kilo': 'Select Number Of Meal',
-                                        style: TextStyle(
-                                          color: AppCubit.get(context).isDark?Colors.white:Colors.black,
-                                        ),
-                                      ),
-                                      dropdownColor: Colors.grey,
-                                      icon: const Icon(Icons.arrow_drop_down),
-                                      iconSize: 36,
+                                    hint:Text(
+                                      'Select Item',
                                       style: TextStyle(
-                                          color:  AppCubit.get(context).isDark?Colors.white:Colors.black,
-                                          fontSize: 18.0
+                                        color: AppCubit.get(context).isDark?Colors.white:Colors.black,
                                       ),
-                                      value: check1? quantityKilo:quantityMeal,
-                                      isExpanded: true,
-                                      underline: const SizedBox(),
-                                      onChanged: (newValue){
-                                        if(check1){
-                                          setState(() {
-                                            quantityKilo =newValue;
-                                          });
-                                        }else{
-                                          setState(() {
-                                            quantityMeal =newValue;
-                                          });
-                                        }
-                                      },
-                                      items: check1? listKilo.map((valueItem){
-                                        return DropdownMenuItem(
-                                            value: valueItem,
-                                            child: Text(valueItem));
-                                      }).toList():listMeal.map((valueItem){
-                                        return DropdownMenuItem(
-                                            value: valueItem,
-                                            child: Text(valueItem));
-                                      }).toList()
+                                    ),
+                                    dropdownColor: Colors.grey,
+                                    icon: const Icon(Icons.arrow_drop_down),
+                                    iconSize: 36,
+                                    style:  TextStyle(
+                                        color:  AppCubit.get(context).isDark?Colors.white:Colors.black,
+                                        fontSize: 18.0
+                                    ),
+                                    value: deliver,
+                                    isExpanded: true,
+                                    underline: const SizedBox(),
+                                    onChanged: (newValue){
+                                      setState(() {
+                                        listOfDeliver =newValue as List<String>;
+                                      });
+                                    },
+                                    items: listOfDeliver.map((valueItem){
+                                      return DropdownMenuItem(
+                                          value: valueItem,
+                                          child: Text(valueItem));
+                                    }).toList(),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          defaultLine(context),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          //Buttons
                           Container(
                             decoration: BoxDecoration(
                                 color: Colors.green,
@@ -397,72 +523,13 @@ class _FoodState extends State<Food> {
                                 }
                               },
                               child: const Text(
-                                'Send Delegate',
+                                'DONE',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),),
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(10.0)
-                            ),
-                            width: double.infinity,
-
-                            height: 40.0,
-                            child: MaterialButton(
-                              onPressed: (){
-                                if (formKey.currentState!.validate()) {
-
-                                }
-                              },
-                              child: const Text(
-                                'Deliver To Us',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),),
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          defaultLine(context),
-                          //instruction
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Know How To Donate From' ,
-                                style: TextStyle(
-                                  color: Colors.grey[500],
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5.0,
-                              ),
-
-                              TextButton(
-                                  onPressed: (){
-                                    navigateTo(context, InstructionsScreen());
-                                  }, child: const Text(
-                                'Here',
-                                style: TextStyle(
-                                  color: Colors.green,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ))
-                            ],
                           ),
 
                         ],
