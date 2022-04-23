@@ -1,15 +1,14 @@
 // ignore_for_file: use_key_in_widget_constructors
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../../Style/Colors.dart';
+import '../../../Style/Colors.dart';
 
-class AboutScreen extends StatefulWidget {
+class TermsAndConditionsScreen extends StatefulWidget {
   @override
-  _AboutScreenState createState() => _AboutScreenState();
+  _TermsAndConditionsScreenState createState() =>
+      _TermsAndConditionsScreenState();
 }
 
-class _AboutScreenState extends State<AboutScreen> {
+class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -26,27 +25,9 @@ class _AboutScreenState extends State<AboutScreen> {
             child: Icon(Icons.arrow_back_ios),
           ),
         ),
-        title: const Text("About", style: TextStyle(fontSize: 19)),
+        title:
+        const Text("Terms And Conditions", style: TextStyle(fontSize: 19)),
       ),
-      // appBar: AppBar(
-      //   backgroundColor: Constants.primaryAppColor,
-      //   shape: CustomShapeBorder(),
-      //   leading: const Icon(Icons.arrow_back_ios),
-      //   title: const Text("About", style: TextStyle(fontSize: 19)),
-      // ),
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   backgroundColor: Constants.primaryAppColor,
-      //   elevation: 0.0,
-      //   leading: InkWell(
-      //     onTap: () => Navigator.pop(context),
-      //     child: const Padding(
-      //       padding: EdgeInsetsDirectional.only(start: 10),
-      //       child: Icon(Icons.arrow_back_ios),
-      //     ),
-      //   ),
-      //   title: const Text("About", style: TextStyle(fontSize: 19)),
-      // ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsetsDirectional.only(
@@ -83,28 +64,3 @@ class _AboutScreenState extends State<AboutScreen> {
     );
   }
 }
-
-// class CustomShapeBorder extends ContinuousRectangleBorder {
-//   @override
-//   Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-//     const double innerCircleRadius = 150.0;
-//
-//     Path path = Path();
-//     path.lineTo(0, rect.height);
-//     path.quadraticBezierTo(rect.width / 2 - (innerCircleRadius / 2) - 30,
-//         rect.height + 15, rect.width / 2 - 75, rect.height + 50);
-//     path.cubicTo(
-//         rect.width / 2 - 40,
-//         rect.height + innerCircleRadius - 40,
-//         rect.width / 2 + 40,
-//         rect.height + innerCircleRadius - 40,
-//         rect.width / 2 + 75,
-//         rect.height + 50);
-//     path.quadraticBezierTo(rect.width / 2 + (innerCircleRadius / 2) + 30,
-//         rect.height + 15, rect.width, rect.height);
-//     path.lineTo(rect.width, 0.0);
-//     path.close();
-//
-//     return path;
-//   }
-// }

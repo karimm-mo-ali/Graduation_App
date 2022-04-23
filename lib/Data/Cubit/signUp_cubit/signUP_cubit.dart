@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graduation/Data/Cubit/signUp_cubit/signUp_state.dart';
-import 'package:flutter_graduation/View/screens/home_screen.dart';
+import 'package:flutter_graduation/View/screens/Home_Screens/home_screen.dart';
 import '../../../View/widgets/reusable_component.dart';
 import '../../../helpers/myApplication.dart';
 import '../../Models/signUp_model.dart';

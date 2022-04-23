@@ -1,18 +1,19 @@
 // ignore_for_file: avoid_print
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_graduation/View/screens/register_screen.dart';
+import 'package:flutter_graduation/View/screens/Auth_Screens/register_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_graduation/helpers/myApplication.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../../Data/Cubit/login_cubit/login_cubit.dart';
-import '../../Data/Cubit/login_cubit/login_state.dart';
-import '../../Style/Colors.dart';
-import '../../helpers/myApplication.dart';
-import '../widgets/btn_widget.dart';
-import '../widgets/txtfield_widget.dart';
+
+import '../../../Data/Cubit/login_cubit/login_cubit.dart';
+import '../../../Data/Cubit/login_cubit/login_state.dart';
+import '../../../Style/Colors.dart';
+import '../../widgets/btn_widget.dart';
+import '../../widgets/txtfield_widget.dart';
 import 'forget_pass_screen.dart';
-import 'home_screen.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../Data/Cubit/app_cubit/app_cubit.dart';
-import '../widgets/reusable.dart';
-import '../widgets/reusable_component.dart';
-import 'instructions_screen.dart';
+import '../../../Data/Cubit/app_cubit/app_cubit.dart';
+import '../../widgets/reusable.dart';
+import '../../widgets/reusable_component.dart';
+import '../SideMenu_Screens/instructions_screen.dart';
 
 class Clothes extends StatefulWidget {
 

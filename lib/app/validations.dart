@@ -46,6 +46,17 @@ class Validations {
     return validateString;
   }
 
+  static String? validateConPassword(
+      String password, BuildContext context, String conpass) {
+    String? validateString;
+    if (conpass.trim().isEmpty) {
+      validateString = "emptyFailed";
+    } else if (password.toString() != conpass.toString()) {
+      validateString = "Both passwords must be match";
+    }
+    return validateString;
+  }
+
   static String? validateField(String value, BuildContext context) {
     String? validateString;
     if (value.trim().isEmpty) {

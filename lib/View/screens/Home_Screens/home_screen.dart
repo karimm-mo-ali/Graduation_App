@@ -1,13 +1,13 @@
-import 'package:flutter_graduation/View/screens/aboutUs_screen.dart';
+import 'package:flutter_graduation/View/screens/SideMenu_Screens/aboutUs_screen.dart';
 
-import 'package:flutter_graduation/View/screens/setting_screen.dart';
+import 'package:flutter_graduation/View/screens/Home_Screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
-import '../../Data/Cubit/app_cubit/app_cubit.dart';
-import '../../Data/Cubit/app_cubit/app_state.dart';
-import '../widgets/drawer.dart';
-import 'instructions_screen.dart';
+import '../../../Data/Cubit/app_cubit/app_cubit.dart';
+import '../../../Data/Cubit/app_cubit/app_state.dart';
+import '../../widgets/drawer.dart';
+import '../SideMenu_Screens/instructions_screen.dart';
 
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);

@@ -2,8 +2,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../Style/Colors.dart';
-import '../widgets/btn_widget.dart';
+import '../../../Style/Colors.dart';
+import '../../widgets/btn_widget.dart';
 
 class AccountDetailsScreen extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_graduation/View/screens/home_screen.dart';
+import 'package:flutter_graduation/View/screens/Home_Screens/home_screen.dart';
 import '../../../helpers/myApplication.dart';
 import '../../Models/user_model.dart';
 import '../../Reposetories/auth.dart';

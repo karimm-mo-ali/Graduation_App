@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../Style/Colors.dart';
-import '../screens/login_screen.dart';
+import '../screens/Auth_Screens/login_screen.dart';
 
 // ignore: use_key_in_widget_constructors, must_be_immutable
 class OnBoardingWidget extends StatelessWidget {

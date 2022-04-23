@@ -1,10 +1,9 @@
 // ignore_for_file: deprecated_member_use
-
-import 'package:flutter_graduation/View/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import '../../Data/Models/step_model.dart';
-import '../../Style/Colors.dart';
-import '../widgets/reusable_component.dart';
+import '../../../Data/Models/step_model.dart';
+import '../../../Style/Colors.dart';
+import '../../widgets/reusable_component.dart';
+import 'login_screen.dart';
 
 class OnBoardScreen extends StatefulWidget {
   @override

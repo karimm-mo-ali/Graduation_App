@@ -1,14 +1,14 @@
 // ignore_for_file: use_key_in_widget_constructors
 import 'package:flutter/material.dart';
-import '../../Style/Colors.dart';
 
-class TermsAndConditionsScreen extends StatefulWidget {
+import '../../../Style/Colors.dart';
+
+class InstructionsScreen extends StatefulWidget {
   @override
-  _TermsAndConditionsScreenState createState() =>
-      _TermsAndConditionsScreenState();
+  _InstructionsScreenState createState() => _InstructionsScreenState();
 }
 
-class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
+class _InstructionsScreenState extends State<InstructionsScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -25,8 +25,7 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
             child: Icon(Icons.arrow_back_ios),
           ),
         ),
-        title:
-        const Text("Terms And Conditions", style: TextStyle(fontSize: 19)),
+        title: const Text("Instructions", style: TextStyle(fontSize: 19)),
       ),
       body: SingleChildScrollView(
         child: Padding(

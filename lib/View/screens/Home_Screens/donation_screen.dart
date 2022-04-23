@@ -1,8 +1,10 @@
-import 'package:flutter_graduation/View/screens/clothes_screen.dart';
-import 'package:flutter_graduation/View/screens/food_screen.dart';
+import 'package:flutter_graduation/View/screens/Home_Screens/clothes_screen.dart';
+import 'package:flutter_graduation/View/screens/Home_Screens/food_screen.dart';
 import 'package:flutter/material.dart';
-import '../widgets/reusable_component.dart';
-import 'instructions_screen.dart';
+
+import '../../widgets/reusable_component.dart';
+import '../SideMenu_Screens/instructions_screen.dart';
+
 
 
 class Donation extends StatelessWidget {

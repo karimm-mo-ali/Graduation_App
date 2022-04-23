@@ -50,18 +50,24 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
           },
           controller: widget.textEditingController,
           keyboardType: widget.textInputType,
-          obscureText: (widget.hintTxt == "Password") ? obscure : false,
+          obscureText: (widget.hintTxt == "Password" ||
+                  widget.hintTxt == "*************" ||
+                  widget.hintTxt == '***************')
+              ? obscure
+              : false,
           textInputAction: (widget.isHasNextFocus == true)
               ? TextInputAction.next
               : TextInputAction.done,
           enableInteractiveSelection: true,
           focusNode: focusNode,
-          onFieldSubmitted:
-              (widget.hintTxt == "Password" && widget.isHasNextFocus == true)
-                  ? (_) => focusNode.nextFocus()
-                  : (_) {
-                      FocusScope.of(context).requestFocus(widget.focusNode);
-                    },
+          onFieldSubmitted: ((widget.hintTxt == "Password" ||
+                      widget.hintTxt == "*************" ||
+                      widget.hintTxt == '***************') &&
+                  widget.isHasNextFocus == true)
+              ? (_) => focusNode.nextFocus()
+              : (_) {
+                  FocusScope.of(context).requestFocus(widget.focusNode);
+                },
           obscuringCharacter: "*",
           maxLength: (widget.hintTxt == " " &&
                   widget.textInputType != TextInputType.number)
@@ -90,7 +96,9 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide:
                     BorderSide(color: Constants.primaryAppColor, width: 0.7)),
-            suffixIcon: (widget.hintTxt == "Password")
+            suffixIcon: (widget.hintTxt == "Password" ||
+                    widget.hintTxt == "*************" ||
+                    widget.hintTxt == '***************')
                 ? InkWell(
                     onTap: () {
                       onPressEye();
@@ -124,9 +132,14 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
               String? validationString =
                   Validations.validateEmail(value!, context);
               return validationString;
-            } else if (widget.hintTxt == "Password") {
+            } else if (widget.hintTxt == "Password" ||
+                widget.hintTxt == "*************") {
               String? validationString =
                   Validations.validatePassword(value!, context);
+              return validationString;
+            } else if ( widget.hintTxt == "***************") {
+              String? validationString =
+              Validations.validateConPassword(value!, context,widget.pass!);
               return validationString;
             } else if (widget.hintTxt == "First Name" ||
                 widget.hintTxt == "Last Name") {

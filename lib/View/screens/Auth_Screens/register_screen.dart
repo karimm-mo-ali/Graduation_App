@@ -7,12 +7,12 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../Data/Cubit/signUp_cubit/signUP_cubit.dart';
-import '../../Data/Cubit/signUp_cubit/signUp_state.dart';
-import '../../Style/Colors.dart';
-import '../../helpers/myApplication.dart';
-import '../widgets/btn_widget.dart';
-import '../widgets/txtfield_widget.dart';
+import '../../../Data/Cubit/signUp_cubit/signUP_cubit.dart';
+import '../../../Data/Cubit/signUp_cubit/signUp_state.dart';
+import '../../../Style/Colors.dart';
+import '../../../helpers/myApplication.dart';
+import '../../widgets/btn_widget.dart';
+import '../../widgets/txtfield_widget.dart';
 import 'login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {

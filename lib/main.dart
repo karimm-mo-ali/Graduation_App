@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_graduation/Data/Cubit/signUp_cubit/signUP_cubit.dart';
-import 'package:flutter_graduation/View/screens/splash_screen.dart';
+import 'package:flutter_graduation/View/screens/Auth_Screens/splash_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Data/Cubit/app_cubit/app_cubit.dart';
 import 'Data/Cubit/app_cubit/app_state.dart';

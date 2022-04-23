@@ -1,8 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors, avoid_print, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
-import '../../Style/Colors.dart';
-import '../widgets/btn_widget.dart';
-import '../widgets/txtfield_widget.dart';
+import 'package:flutter_graduation/View/screens/Auth_Screens/create_new_pass_screen.dart';
+import '../../../Style/Colors.dart';
+import '../../../helpers/myApplication.dart';
+import '../../widgets/btn_widget.dart';
+import '../../widgets/txtfield_widget.dart';
 
 class ForgetPassScreen extends StatefulWidget {
   @override
@@ -24,7 +26,6 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final bottom = MediaQuery.of(context).viewInsets.bottom;
     return GestureDetector(
       onTap: unFocus,
       child: Scaffold(
@@ -49,12 +50,12 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                 ),
                 Center(
                   child: Text(
-                      "Please enter your phone number to\nreceive the verification code",
+                      "Please enter your email address to\nreceive the verification code",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Constants.HINT.withOpacity(0.7),
-                          fontSize: 16,
-                          height: 1.6)),
+                        color: Constants.HINT.withOpacity(0.7),
+                        fontSize: 16,
+                      )),
                 ),
                 SizedBox(height: size.height * .05),
                 Align(
@@ -63,19 +64,21 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                       style:
                           const TextStyle(color: Constants.HINT, fontSize: 15)),
                 ),
-                SizedBox(height: size.height * .015),
+                SizedBox(height: size.height * .005),
                 TxtFieldWidget(
                   hintTxt: "Email Address",
                   textInputType: TextInputType.emailAddress,
                   textEditingController: emailTextEditingController,
                   isHasNextFocus: false,
                 ),
-                SizedBox(height: size.height * 0.06),
+                SizedBox(height: size.height * 0.04),
                 BtnWidget(
-                  txt: 'Next',
-                  color: Constants.primaryAppColor,
-                  onClicked: () {},
-                )
+                    txt: 'Next',
+                    color: Constants.primaryAppColor,
+                    onClicked: () => MyApplication.navigateTo(
+                          context,
+                          CreateNewPassScreen(),
+                        )),
                 // BlocBuilder<ForgetPassCubit, ForgetPassState>(
                 //     builder: (context, state) {
                 //       if (state is ForgetPassLoading) {

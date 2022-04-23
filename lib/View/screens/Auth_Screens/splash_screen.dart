@@ -1,6 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors
 import 'package:flutter/material.dart';
-import '../../Style/Colors.dart';
+import '../../../Style/Colors.dart';
 import 'on_board_screen.dart';
 
 class SplashScreen extends StatefulWidget {
