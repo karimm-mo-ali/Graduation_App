@@ -7,6 +7,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'Data/Cubit/app_cubit/app_cubit.dart';
 import 'Data/Cubit/app_cubit/app_state.dart';
 import 'Data/Cubit/login_cubit/login_cubit.dart';
+import 'View/screens/SideMenu_Screens/instructions_screen.dart';
 import 'app/cache_helper.dart';
 
 Future<void> main() async {
@@ -128,7 +129,7 @@ class MyApp extends StatelessWidget {
             ),
             themeMode:
                 AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-            home: SplashScreen(),
+            home: InstructionsScreen(),
             debugShowCheckedModeBanner: false,
           );
         },
