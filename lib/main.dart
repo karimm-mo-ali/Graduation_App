@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_graduation/Data/Cubit/change_pass_cubit/change_pass_cubit.dart';
+import 'package:flutter_graduation/Data/Cubit/clothes_request_cubit/clothes_request_cubit.dart';
+import 'package:flutter_graduation/Data/Cubit/contactUs_cubit/contactUs_cubit.dart';
+import 'package:flutter_graduation/Data/Cubit/edit_profile_cubit/edit_profile_cubit.dart';
+import 'package:flutter_graduation/Data/Cubit/food_request_cubit/food_request_cubit.dart';
+import 'package:flutter_graduation/Data/Cubit/profile_info_cubit/profile_info_cubit.dart';
+import 'package:flutter_graduation/Data/Cubit/reset_pass_cubit/reset_pass_cubit.dart';
 import 'package:flutter_graduation/Data/Cubit/signUp_cubit/signUP_cubit.dart';
+import 'package:flutter_graduation/View/screens/Auth_Screens/login_screen.dart';
 import 'package:flutter_graduation/View/screens/Auth_Screens/splash_screen.dart';
+import 'package:flutter_graduation/View/screens/SideMenu_Screens/side_menu_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Data/Cubit/app_cubit/app_cubit.dart';
 import 'Data/Cubit/app_cubit/app_state.dart';
+import 'Data/Cubit/forget_pass_cubit/forget_pass_cubit.dart';
 import 'Data/Cubit/login_cubit/login_cubit.dart';
+import 'Data/Cubit/logout_cubit/logout_cubit.dart';
+import 'View/screens/Home_Screens/home_screen.dart';
 import 'app/cache_helper.dart';
+import 'helpers/sharedPreference.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
+  await sharedPrefs.init();
   bool? isDark = CacheHelper.getBoolean(key: 'isDark');
   runApp(MyApp(isDark));
 }
@@ -25,10 +39,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        //   BlocProvider<ForgetPassCubit>(create: (context) => ForgetPassCubit()),
-        //   BlocProvider<OrdersListCubit>(create: (context) => OrdersListCubit()),
-        // BlocProvider<NotificationsCubit>(
-        //     create: (context) => NotificationsCubit()),
+        BlocProvider<ProfileInfoCubit>(create: (context) => ProfileInfoCubit()),
+        BlocProvider<ContactUsCubit>(create: (context) => ContactUsCubit()),
+        BlocProvider<ChangePassCubit>(create: (context) => ChangePassCubit()),
+        BlocProvider<EditProfileCubit>(create: (context) => EditProfileCubit()),
+        BlocProvider<ForgetPassCubit>(create: (context) => ForgetPassCubit()),
+        BlocProvider<ResetPassCubit>(create: (context) => ResetPassCubit()),
+        BlocProvider<FoodRequestCubit>(create: (context) => FoodRequestCubit()),
+        BlocProvider<ClothesRequestCubit>(
+            create: (context) => ClothesRequestCubit()),
+        BlocProvider<LogoutCubit>(create: (context) => LogoutCubit()),
         BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
         BlocProvider<SignUpCubit>(create: (context) => SignUpCubit()),
         BlocProvider<AppCubit>(
@@ -128,7 +148,9 @@ class MyApp extends StatelessWidget {
             ),
             themeMode:
                 AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-            home: SplashScreen(),
+            home: sharedPrefs.token != "" && sharedPrefs.getSignedIn()
+                ? SideMenuScreen()
+                : SplashScreen(),
             debugShowCheckedModeBanner: false,
           );
         },

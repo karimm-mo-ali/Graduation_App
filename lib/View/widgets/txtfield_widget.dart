@@ -73,6 +73,7 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
                   widget.textInputType != TextInputType.number)
               ? 30
               : 1000,
+          maxLines: widget.hintTxt == "Message" ? 4 : 1,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           textAlignVertical: TextAlignVertical.bottom,
           decoration: InputDecoration(
@@ -137,9 +138,9 @@ class _TxtFieldWidgetState extends State<TxtFieldWidget> {
               String? validationString =
                   Validations.validatePassword(value!, context);
               return validationString;
-            } else if ( widget.hintTxt == "***************") {
-              String? validationString =
-              Validations.validateConPassword(value!, context,widget.pass!);
+            } else if (widget.hintTxt == "***************") {
+              String? validationString = Validations.validateConPassword(
+                  value!, context, widget.pass!);
               return validationString;
             } else if (widget.hintTxt == "First Name" ||
                 widget.hintTxt == "Last Name") {

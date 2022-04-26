@@ -1,5 +1,5 @@
-class UserModel {
-  UserModel({
+class LoginModel {
+  LoginModel({
     required this.status,
     required this.errNum,
     required this.msg,
@@ -10,7 +10,7 @@ class UserModel {
   late final String msg;
   late final Data data;
 
-  UserModel.fromJson(Map<String, dynamic> json){
+  LoginModel.fromJson(Map<String, dynamic> json){
     status = json['status'];
     errNum = json['errNum'];
     msg = json['msg'];
@@ -50,6 +50,7 @@ class Data {
 
 class User {
   User({
+    required this.id,
     required this.FirstName,
     required this.LastName,
     required this.Email,
@@ -57,6 +58,7 @@ class User {
     required this.Address,
     required this.photo,
   });
+  late final int id;
   late final String FirstName;
   late final String LastName;
   late final String Email;
@@ -65,6 +67,7 @@ class User {
   late final String photo;
 
   User.fromJson(Map<String, dynamic> json){
+    id = json['id'];
     FirstName = json['First_Name'];
     LastName = json['Last_Name'];
     Email = json['Email'];
@@ -75,6 +78,7 @@ class User {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
+    _data['id'] = id;
     _data['First_Name'] = FirstName;
     _data['Last_Name'] = LastName;
     _data['Email'] = Email;

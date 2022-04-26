@@ -1,6 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors, avoid_print, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_graduation/View/screens/Auth_Screens/create_new_pass_screen.dart';
+import 'package:flutter_graduation/View/screens/Auth_Screens/verify_code_screen.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../../../Data/Cubit/forget_pass_cubit/forget_pass_cubit.dart';
+import '../../../Data/Cubit/forget_pass_cubit/forget_pass_state.dart';
 import '../../../Style/Colors.dart';
 import '../../../helpers/myApplication.dart';
 import '../../widgets/btn_widget.dart';
@@ -53,7 +59,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                       "Please enter your email address to\nreceive the verification code",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Constants.HINT.withOpacity(0.7),
+                        color: Constants.HINT.withOpacity(0.8),
                         fontSize: 16,
                       )),
                 ),
@@ -72,74 +78,41 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                   isHasNextFocus: false,
                 ),
                 SizedBox(height: size.height * 0.04),
-                BtnWidget(
-                    txt: 'Next',
-                    color: Constants.primaryAppColor,
-                    onClicked: () => MyApplication.navigateTo(
-                          context,
-                          CreateNewPassScreen(),
-                        )),
-                // BlocBuilder<ForgetPassCubit, ForgetPassState>(
-                //     builder: (context, state) {
-                //       if (state is ForgetPassLoading) {
-                //         return Column(
-                //           children: [
-                //             SizedBox(height: size.height * 0.06),
-                //             SpinKitThreeBounce(
-                //               color: Constants.primaryAppColor,
-                //               size: size.width * .08,
-                //             ),
-                //           ],
-                //         );
-                //       } else {
-                //         return Column(
-                //           children: [
-                //             SizedBox(height: size.height * 0.06),
-                //             BtnWidget(
-                //               txt: getTranslated(context, 'next')!,
-                //               color: Constants.primaryAppColor,
-                //               onClicked: () async {
-                //                 MyApplication.checkConnection().then((value) {
-                //                   if (_formKey.currentState!.validate()) {
-                //                     if (value == true) {
-                //                       ForgetPassCubit.context = context;
-                //                       ForgetPassCubit.phone = cCode + phoneTextEditingController.text;
-                //                       BlocProvider.of<ForgetPassCubit>(context)
-                //                           .ForgetPass();
-                //                     } else {
-                //                       Fluttertoast.showToast(
-                //                           msg: getTranslated(context, 'noInternet')!,
-                //                           toastLength: Toast.LENGTH_SHORT,
-                //                           gravity: ToastGravity.SNACKBAR,
-                //                           timeInSecForIosWeb: 3,
-                //                           backgroundColor: Constants.primaryAppColor,
-                //                           textColor: Constants.whiteAppColor,
-                //                           fontSize: 16.0);
-                //                     }
-                //                   }
-                //                 });
-                //                 // if (!await MyApplication.checkConnection()) {
-                //                 //   Fluttertoast.showToast(
-                //                 //       msg: getTranslated(context, 'noInternet')!,
-                //                 //       toastLength: Toast.LENGTH_SHORT,
-                //                 //       gravity: ToastGravity.SNACKBAR,
-                //                 //       timeInSecForIosWeb: 3,
-                //                 //       backgroundColor: Colors.red,
-                //                 //       textColor: Colors.white,
-                //                 //       fontSize: 16.0);
-                //                 //   return;
-                //                 // }
-                //                 // ForgetPassCubit.context = context;
-                //                 // ForgetPassCubit.phone =
-                //                 //     cCode + phoneTextEditingController.text;
-                //                 // BlocProvider.of<ForgetPassCubit>(context)
-                //                 //     .ForgetPass();
-                //               },
-                //             ),
-                //           ],
-                //         );
-                //       }
-                //     }),
+                BlocBuilder<ForgetPassCubit, ForgetPassState>(
+                    builder: (context, state) {
+                  if (state is ForgetPassLoading) {
+                    return SpinKitThreeBounce(
+                      color: Constants.primaryAppColor,
+                      size: size.width * .08,
+                    );
+                  } else {
+                    return BtnWidget(
+                      txt: 'Next',
+                      color: Constants.primaryAppColor,
+                      onClicked: () async {
+                        MyApplication.checkConnection().then((value) {
+                          if (_formKey.currentState!.validate()) {
+                            if (value == true) {
+                              BlocProvider.of<ForgetPassCubit>(context)
+                                  .forgetPass(
+                                      email: emailTextEditingController.text,
+                                      context: context);
+                            } else {
+                              Fluttertoast.showToast(
+                                  msg: 'no Internet',
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.SNACKBAR,
+                                  timeInSecForIosWeb: 3,
+                                  backgroundColor: Constants.primaryAppColor,
+                                  textColor: Constants.white,
+                                  fontSize: 16.0);
+                            }
+                          }
+                        });
+                      },
+                    );
+                  }
+                }),
               ]),
             ),
           ),

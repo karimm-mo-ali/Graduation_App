@@ -21,7 +21,6 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  var check = true;
   String? _selectedValue;
   final TextEditingController firstNameTextEditingController =
       TextEditingController();

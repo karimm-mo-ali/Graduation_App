@@ -22,7 +22,7 @@ class BtnWidget extends StatelessWidget {
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
       child: SizedBox(
-        height: size.height * 0.065,
+        height: size.height * 0.07,
         child: ElevatedButton(
           onPressed: onClicked,
           style: ButtonStyle(

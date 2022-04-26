@@ -1,4 +1,4 @@
-import '../../Models/signUp_model.dart';
+import '../../Models/Auth_Models/signUp_model.dart';
 
 abstract class SignUpState {}
 

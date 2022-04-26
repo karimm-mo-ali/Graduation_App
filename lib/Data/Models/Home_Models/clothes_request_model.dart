@@ -1,5 +1,5 @@
-class SignUpModel {
-  SignUpModel({
+class ClothesRequestModel {
+  ClothesRequestModel({
     required this.status,
     required this.errNum,
     required this.msg,
@@ -8,7 +8,7 @@ class SignUpModel {
   late final String errNum;
   late final String msg;
 
-  SignUpModel.fromJson(Map<String, dynamic> json){
+  ClothesRequestModel.fromJson(Map<String, dynamic> json){
     status = json['status'];
     errNum = json['errNum'];
     msg = json['msg'];
@@ -21,4 +21,4 @@ class SignUpModel {
     _data['msg'] = msg;
     return _data;
   }
-}
+} 

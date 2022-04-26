@@ -1,279 +1,176 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../../../Data/Cubit/contactUs_cubit/contactUs_cubit.dart';
+import '../../../Data/Cubit/contactUs_cubit/contactUs_state.dart';
+import '../../../Style/Colors.dart';
+import '../../../helpers/myApplication.dart';
+import '../../widgets/btn_widget.dart';
+import '../../widgets/txtfield_widget.dart';
 
-import '../../../Data/Cubit/app_cubit/app_cubit.dart';
-import '../../../Data/Cubit/app_cubit/app_state.dart';
+class ContactUsScreen extends StatelessWidget {
+  final TextEditingController firstNameTextEditingController =
+      TextEditingController();
+  final TextEditingController phoneTextEditingController =
+      TextEditingController();
+  final TextEditingController lastNameTextEditingController =
+      TextEditingController();
+  final TextEditingController emailTextEditingController =
+      TextEditingController();
+  final TextEditingController messageTextEditingController =
+      TextEditingController();
 
-class Profile extends StatelessWidget {
-  Profile({Key? key}) : super(key: key);
-  var nameController = TextEditingController();
-  var phoneController = TextEditingController();
-  var emailController = TextEditingController();
-  var descriptionTextController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit, AppStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return Scaffold(
-              body: Form(
-            key: formKey,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  children: [
-                    //name
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.person,
-                          color: Colors.grey,
-                        ),
-                        hintText: 'Ahmed',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        labelText: 'Your Name',
-                        labelStyle: TextStyle(color: Colors.grey),
-                        border: OutlineInputBorder(),
-                      ),
-                      validator: (value) => value?.isEmpty ?? true
-                          ? 'You should Enter Name'
-                          : null,
-                      controller: nameController,
-                      keyboardType: TextInputType.name,
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Constants.white,
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        // leading: InkWell(
+        //   onTap: () => Navigator.pop(context),
+        //   child: const Padding(
+        //     padding: EdgeInsetsDirectional.only(start: 10),
+        //     child: Icon(Icons.arrow_back_ios),
+        //   ),
+        // ),
+        title: const Text("Contact Us", style: TextStyle(fontSize: 19)),
+      ),
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Center(
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: size.height * .02, bottom: size.height * .05),
+                    child: Center(
+                      child: Image.asset("assets/logo.png",
+                          height: size.height * 0.2),
                     ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    //phone
-                    TextFormField(
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Your Phone Number',
-                          labelStyle: TextStyle(color: Colors.grey),
-                          hintText: '01',
-                          hintStyle: TextStyle(color: Colors.grey),
-                          prefixIcon: Icon(
-                            Icons.phone_android,
-                            color: Colors.grey,
-                          )),
-                      keyboardType: TextInputType.phone,
-                      validator: (value) => value?.isEmpty ?? true
-                          ? 'Should enter your phone'
-                          : null,
-                      controller: phoneController,
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    //email
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Your Email',
-                        labelStyle: TextStyle(color: Colors.grey),
-                        hintText: 'ab***@gm.com',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(
-                          Icons.email,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      validator: (value) => value?.isEmpty ?? true
-                          ? 'Should Enter Your Email'
-                          : null,
-                      keyboardType: TextInputType.emailAddress,
-                      controller: emailController,
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-
-                    //message description
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Message',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        labelText: 'Message',
-                        labelStyle: TextStyle(color: Colors.grey),
-                        prefixIcon: Icon(
-                          Icons.message,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      maxLines: 4,
-                      validator: (value) => value?.isEmpty ?? true
-                          ? 'Should Enter Message'
-                          : null,
-                      controller: descriptionTextController,
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-
-                    //Button
-                    Container(
-                      width: double.infinity,
-                      height: 40.0,
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadiusDirectional.circular(10.0),
-                      ),
-                      child: MaterialButton(
-                        onPressed: () {
-                          if (formKey.currentState!.validate()) {}
-                        },
-                        child: const Text(
-                          'SEND',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-
-                    //our emails and phone
-                    Container(
-                      width: double.infinity,
-                      height: 2.0,
-                      color: Colors.grey[300],
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    const AutoSizeText(
-                      'You Can also Contact with us Using',
-                      style: TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
-                      maxLines: 1,
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          MaterialButton(
-                            onPressed: () {},
-                            child: Column(
-                              children: [
-                                Column(
-                                  children: const [
-                                    CircleAvatar(
-                                      radius: 25.0,
-                                      backgroundColor: Colors.green,
-                                      child: Icon(
-                                        Icons.call_rounded,
-                                        size: 25.0,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10.0,
-                                ),
-                                const AutoSizeText(
-                                  'WhatsApp',
-                                  style: TextStyle(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15.0),
-                                  maxLines: 1,
-                                )
-                              ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
+                        left: 30.0,
+                        right: 30.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: TxtFieldWidget(
+                                hintTxt: "First Name",
+                                textInputType: TextInputType.name,
+                                textEditingController:
+                                    firstNameTextEditingController,
+                                isHasNextFocus: true,
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 20.0,
-                          ),
-                          MaterialButton(
-                            onPressed: () {},
-                            child: Column(
-                              children: [
-                                Column(
-                                  children: const [
-                                    CircleAvatar(
-                                      radius: 25.0,
-                                      backgroundColor: Colors.green,
-                                      child: Icon(
-                                        Icons.email_rounded,
-                                        size: 25.0,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10.0,
-                                ),
-                                const AutoSizeText(
-                                  'Gmail',
-                                  style: TextStyle(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15.0),
-                                  maxLines: 1,
-                                )
-                              ],
+                            SizedBox(width: size.height * 0.02),
+                            Expanded(
+                              child: TxtFieldWidget(
+                                hintTxt: "Last Name",
+                                textInputType: TextInputType.name,
+                                textEditingController:
+                                    lastNameTextEditingController,
+                                isHasNextFocus: true,
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 20.0,
-                          ),
-                          MaterialButton(
-                            onPressed: () {},
-                            child: Column(
-                              children: [
-                                Column(
-                                  children: const [
-                                    CircleAvatar(
-                                      radius: 25.0,
-                                      backgroundColor: Colors.green,
-                                      child: Icon(
-                                        Icons.facebook_rounded,
-                                        size: 25.0,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10.0,
-                                ),
-                                const AutoSizeText(
-                                  'FaceBook',
-                                  style: TextStyle(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15.0),
-                                  maxLines: 1,
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                          ],
+                        ),
+                        TxtFieldWidget(
+                          hintTxt: "Email Address",
+                          textInputType: TextInputType.emailAddress,
+                          textEditingController: emailTextEditingController,
+                          isHasNextFocus: true,
+                        ),
+                        TxtFieldWidget(
+                          hintTxt: "Phone Number",
+                          textInputType: TextInputType.phone,
+                          textEditingController: phoneTextEditingController,
+                          isHasNextFocus: true,
+                        ),
+                        TxtFieldWidget(
+                          hintTxt: "Message",
+                          textInputType: TextInputType.text,
+                          textEditingController: messageTextEditingController,
+                          isHasNextFocus: false,
+                        ),
+                        SizedBox(
+                          height: size.height * 0.02,
+                        ),
+                        Center(
+                          child: BlocBuilder<ContactUsCubit, ContactUsState>(
+                              builder: (context, state) {
+                            if (state is ContactUsLoading) {
+                              return SpinKitThreeBounce(
+                                color: Constants.primaryAppColor,
+                                size: size.width * .08,
+                              );
+                            } else {
+                              return BtnWidget(
+                                txt: "Send To Us",
+                                color: Constants.primaryAppColor,
+                                onClicked: () {
+                                  MyApplication.checkConnection().then((value) {
+                                    if (_formKey.currentState!.validate()) {
+                                      if (value == true) {
+                                        BlocProvider.of<ContactUsCubit>(
+                                                context)
+                                            .contactUs(
+                                                firstName:
+                                                    firstNameTextEditingController
+                                                        .text,
+                                                lastName:
+                                                    lastNameTextEditingController
+                                                        .text,
+                                                email:
+                                                    emailTextEditingController
+                                                        .text,
+                                                phone:
+                                                    phoneTextEditingController
+                                                        .text,
+                                                message:
+                                                    messageTextEditingController
+                                                        .text,
+                                                context: context);
+                                      } else {
+                                        Fluttertoast.showToast(
+                                            msg: 'no Internet',
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.SNACKBAR,
+                                            timeInSecForIosWeb: 3,
+                                            backgroundColor:
+                                                Constants.primaryAppColor,
+                                            textColor: Constants.white,
+                                            fontSize: 16.0);
+                                      }
+                                    }
+                                  });
+                                },
+                              );
+                            }
+                          }),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-          ));
-        },
+          ),
+        ),
       ),
     );
   }

@@ -6,7 +6,6 @@ import '../../../View/screens/SideMenu_Screens/conact_us_screen.dart';
 import '../../../View/screens/Home_Screens/request_screen.dart';
 import 'app_state.dart';
 
-
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialStates());
 
@@ -15,7 +14,7 @@ class AppCubit extends Cubit<AppStates> {
   List<Widget> screens = [
     const Donation(),
     const Request(),
-    Profile(),
+    ContactUsScreen(),
   ];
   List<String> title = [
     'DONATION',

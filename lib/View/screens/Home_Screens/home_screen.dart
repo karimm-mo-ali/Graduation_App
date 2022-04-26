@@ -1,15 +1,8 @@
 import 'package:conditional_builder/conditional_builder.dart';
-import 'package:flutter_graduation/View/screens/SideMenu_Screens/aboutUs_screen.dart';
-
-import 'package:flutter_graduation/View/screens/Home_Screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hexcolor/hexcolor.dart';
 import '../../../Data/Cubit/app_cubit/app_cubit.dart';
 import '../../../Data/Cubit/app_cubit/app_state.dart';
-import '../../widgets/drawer.dart';
-import '../../widgets/reusable_component.dart';
-import '../SideMenu_Screens/instructions_screen.dart';
 
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
@@ -22,33 +15,33 @@ class Home extends StatelessWidget {
       builder: (context, states) {
         AppCubit cubit = AppCubit.get(context);
         return Scaffold(
-          appBar: AppBar(
-            // leading: IconButton(
-            //   onPressed: () {
-            //     Navigator.pushReplacement(context,
-            //         MaterialPageRoute(builder: (context) {
-            //           return DrawerWidget();
-            //         }));
-            //   },
-            //   icon: Icon(Icons.menu,
-            //       color:
-            //           AppCubit.get(context).isDark ? Colors.white : Colors.black),
-            // ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: IconButton(
-                  onPressed: () {
-                    AppCubit.get(context).changeAppMode();
-                  },
-                  icon: Icon(Icons.brightness_4_outlined,
-                      color: AppCubit.get(context).isDark
-                          ? Colors.white
-                          : Colors.black),
-                ),
-              ),
-            ],
-          ),
+          // appBar: AppBar(
+          //   leading: IconButton(
+          //     onPressed: () {
+          //       // Navigator.pushReplacement(context,
+          //       //     MaterialPageRoute(builder: (context) {
+          //       //       return DrawerWidget();
+          //       //     }));
+          //     },
+          //     icon: Icon(Icons.menu,
+          //         color:
+          //             AppCubit.get(context).isDark ? Colors.white : Colors.black),
+          //   ),
+          //   actions: [
+          //     Padding(
+          //       padding: const EdgeInsets.all(8.0),
+          //       child: IconButton(
+          //         onPressed: () {
+          //           AppCubit.get(context).changeAppMode();
+          //         },
+          //         icon: Icon(Icons.brightness_4_outlined,
+          //             color: AppCubit.get(context).isDark
+          //                 ? Colors.white
+          //                 : Colors.black),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           body: ConditionalBuilder(
             condition: true,
             builder: (context) => cubit.screens[cubit.currentIndex],
@@ -56,7 +49,6 @@ class Home extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           ),
-
           bottomNavigationBar: BottomNavigationBar(
             items: const [
               BottomNavigationBarItem(
@@ -71,12 +63,12 @@ class Home extends StatelessWidget {
                 ),
                 label: 'REQUEST',
               ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.chat_rounded,
-                ),
-                label: 'CONTACTUS',
-              ),
+              // BottomNavigationBarItem(
+              //   icon: Icon(
+              //     Icons.chat_rounded,
+              //   ),
+              //   label: 'CONTACTUS',
+              // ),
             ],
             type: BottomNavigationBarType.fixed,
             elevation: 50.0,

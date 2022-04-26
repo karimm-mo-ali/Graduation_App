@@ -1,15 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graduation/View/screens/Home_Screens/home_screen.dart';
+import 'package:flutter_graduation/View/screens/SideMenu_Screens/side_menu_screen.dart';
 import '../../../helpers/myApplication.dart';
-import '../../Models/user_model.dart';
+import '../../Models/Auth_Models/login_model.dart';
 import '../../Reposetories/auth.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
   AuthRepo auth = AuthRepo();
-  UserModel? login(
+  LoginModel? login(
       {String? email,
       String? pass,
       BuildContext? context,
@@ -19,7 +20,7 @@ class LoginCubit extends Cubit<LoginState> {
       auth.login(email: email, pass: pass, rememberMe: remember).then((value) {
         if (value != null) {
           emit(LoginLoaded(value));
-          MyApplication.navigateToReplace(context!, Home());
+          MyApplication.navigateToReplace(context!, SideMenuScreen());
         } else {
           emit(LoginError());
         }

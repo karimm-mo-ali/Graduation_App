@@ -4,6 +4,7 @@ import 'package:flutter_graduation/View/screens/Auth_Screens/register_screen.dar
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graduation/helpers/myApplication.dart';
+import 'package:flutter_graduation/helpers/sharedPreference.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -13,7 +14,6 @@ import '../../../Style/Colors.dart';
 import '../../widgets/btn_widget.dart';
 import '../../widgets/txtfield_widget.dart';
 import 'forget_pass_screen.dart';
-
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -29,20 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordTextEditingController =
       TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // bool matchingPhone = false;
-  // final FocusNode phoneFocusNode = FocusNode();
-
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   // phoneTextEditingController.addListener(() {
-  //   //   setState(() {
-  //   //     matchingPhone = (phoneTextEditingController.text.trim().length == 9 &&
-  //   //         phoneTextEditingController.text.trim().isNotEmpty);
-  //   //   });
-  //   // });
-  // }
 
   @override
   Widget build(BuildContext context) {

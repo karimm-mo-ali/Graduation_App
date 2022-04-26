@@ -1,12 +1,11 @@
-
+import 'package:flutter_graduation/View/screens/Home_Screens/request_clothes.dart';
 import 'package:flutter_graduation/View/screens/Home_Screens/request_food.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_graduation/helpers/myApplication.dart';
 import '../../../Data/Cubit/app_cubit/app_cubit.dart';
 import '../../../Data/Cubit/app_cubit/app_state.dart';
-import '../../widgets/reusable_component.dart';
 import '../SideMenu_Screens/instructions_screen.dart';
-
 
 class Request extends StatelessWidget {
   const Request({Key? key}) : super(key: key);
@@ -14,10 +13,10 @@ class Request extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=>AppCubit(),
-      child: BlocConsumer<AppCubit ,AppStates>(
-        listener: (context ,state){},
-        builder: (context ,state){
+      create: (BuildContext context) => AppCubit(),
+      child: BlocConsumer<AppCubit, AppStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
           return Scaffold(
             body: Center(
               child: SingleChildScrollView(
@@ -25,10 +24,8 @@ class Request extends StatelessWidget {
                   padding: const EdgeInsets.all(15.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children:  [
-                      const Image(
-                          image: AssetImage('assets/onboarding3.jpg')),
-
+                    children: [
+                      const Image(image: AssetImage('assets/onboarding3.jpg')),
                       const SizedBox(
                         height: 10.0,
                       ),
@@ -47,38 +44,30 @@ class Request extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextButton(
-                              onPressed: (){
-                                navigateTo(
-                                    context, const RequestFood()
-                                );
-                              },
-                              child:const Text(
+                              onPressed: () => MyApplication.navigateTo(
+                                  context, RequestFood()),
+                              child: const Text(
                                 'FOOD',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0,
-                                    color: Colors.green
-                                ),
+                                    color: Colors.green),
                               )),
                           const SizedBox(
                             width: 20.0,
                           ),
                           TextButton(
-                              onPressed: (){
-
-                              },
-                              child:const Text(
+                              onPressed: () => MyApplication.navigateTo(
+                                  context, RequestClothes()),
+                              child: const Text(
                                 'CLOTHES',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0,
-                                    color: Colors.green
-                                ),
+                                    color: Colors.green),
                               )),
-
-
-
-                        ],),
+                        ],
+                      ),
                       const SizedBox(
                         height: 20.0,
                       ),
@@ -94,7 +83,7 @@ class Request extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Know How To Request From' ,
+                            'Know How To Request From',
                             style: TextStyle(
                               color: Colors.grey[500],
                               fontSize: 17.0,
@@ -104,22 +93,19 @@ class Request extends StatelessWidget {
                           const SizedBox(
                             width: 5.0,
                           ),
-
                           TextButton(
-                              onPressed: (){
-                                navigateTo(context,  InstructionsScreen());
-                              }, child: const Text(
-                            'Here',
-                            style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ))
+                              onPressed: () => MyApplication.navigateTo(
+                                  context, InstructionsScreen()),
+                              child: const Text(
+                                'Here',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ))
                         ],
                       ),
-
-
                     ],
                   ),
                 ),

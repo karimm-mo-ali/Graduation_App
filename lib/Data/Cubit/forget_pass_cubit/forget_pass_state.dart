@@ -1,4 +1,4 @@
-import '../../Models/forget_pass_model.dart';
+import '../../Models/Auth_Models/forget_pass_model.dart';
 
 abstract class ForgetPassState {}
 

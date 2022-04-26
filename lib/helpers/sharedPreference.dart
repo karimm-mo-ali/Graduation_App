@@ -9,6 +9,7 @@ class SharedPrefs {
   }
 
   String get token => sharedPrefs!.getString(keyToken) ?? "";
+  String get id => sharedPrefs!.getString(keyId) ?? "";
 
   String get name => sharedPrefs!.getString(userName) ?? "";
 
@@ -34,29 +35,25 @@ class SharedPrefs {
     return sharedPrefs?.getString(keyToken) ?? '';
   }
 
-  setName(String? value) {
-    sharedPrefs?.setString(userName, value!);
+  setId(String? value) {
+    sharedPrefs?.setString(keyId, value!);
   }
 
-  String getUserName() {
-    return sharedPrefs?.getString(userName) ?? "";
+  String getId() {
+    return sharedPrefs?.getString(keyId) ?? '';
+  }
+
+  setName(String? value) {
+    sharedPrefs?.setString(userName, value!);
   }
 
   setPicture(String? value) {
     sharedPrefs?.setString(userPicture, value!);
   }
 
-  String getUserPhoto() {
-    return sharedPrefs?.getString(userPicture) ?? "";
-  }
-
   setFcm(String value) {
     sharedPrefs!.setString(fcmToken, value);
   }
-
-  // setEmail(String value) {
-  //   sharedPrefs!.setString(keyEmail, value);
-  // }
 
   setSignedIn(bool? value) {
     sharedPrefs?.setBool(keySignedIn, value!);
@@ -69,12 +66,21 @@ class SharedPrefs {
   void removeToken() {
     sharedPrefs!.remove(keyToken);
   }
+
+  void removename() {
+    sharedPrefs!.remove(userName);
+  }
+
+  void removepicture() {
+    sharedPrefs!.remove(userPicture);
+  }
 }
 
 final sharedPrefs = SharedPrefs();
 
 // constants/strings.dart
 String keyToken = "key_token";
+String keyId = "key_id";
 String userName = "key_name";
 String userPicture = "key_pic";
 String fcmToken = "Fcm_key";
