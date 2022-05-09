@@ -4,8 +4,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../../Data/Cubit/app_cubit/app_cubit.dart';
 import '../../../Data/Cubit/app_cubit/app_state.dart';
-import '../../../Data/Cubit/clothes_donation_cubit/clothes_Donation_state.dart';
 import '../../../Data/Cubit/clothes_donation_cubit/clothes_donation_cubit.dart';
+import '../../../Data/Cubit/clothes_donation_cubit/clothes_donation_state.dart';
 import '../../../Style/Colors.dart';
 import '../../../helpers/myApplication.dart';
 import '../../../helpers/sharedPreference.dart';
@@ -81,7 +81,7 @@ class _DonationClothesState extends State<DonationClothes> {
           key: scaffoldKey,
           appBar: AppBar(
             title: const Text(
-              ' Clothes Request',
+              ' Clothes Donation',
               style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),
             ),
           ),
@@ -398,11 +398,11 @@ class _DonationClothesState extends State<DonationClothes> {
                         ],
                       ),
                     ),
-                    BtnWidget(
-                      txt: "Done",
-                      color: Constants.primaryAppColor,
-                      onClicked: () {},
-                    ),
+                    // BtnWidget(
+                    //   txt: "Done",
+                    //   color: Constants.primaryAppColor,
+                    //   onClicked: () {},
+                    // ),
                     // Center(
                     //   child: BlocBuilder<ClothesDonationCubit,
                     //       ClothesDonationState>(builder: (context, state) {
@@ -454,6 +454,56 @@ class _DonationClothesState extends State<DonationClothes> {
                     //     }
                     //   }),
                     // ),
+                    Center(
+                      child: BlocBuilder<ClothesRequestCubit2, ClothesRequestState2>(builder: (context, state) {
+                        if (state is ClothesRequestLoading2) {
+                          return SpinKitThreeBounce(
+                            color: Constants.primaryAppColor,
+                            size: size.width * .08,
+                          );
+                        } else {
+                          return BtnWidget(
+                            txt: "Done",
+                            color: Constants.primaryAppColor,
+                            onClicked: () {
+                              MyApplication.checkConnection().then((value) {
+                                if (formKey.currentState!.validate()) {
+                                  if (value == true) {
+                                    BlocProvider.of<ClothesRequestCubit2>(
+                                            context)
+                                        .donateClothes(
+                                            gender: gender,
+                                            type: typeOfClothes,
+                                            size: sizeOfClothes,
+                                            quantity: titleController.text,
+                                            location: locationController.text,
+                                            deliveryType: deliver,
+                                            context: context);
+                                    print(sharedPrefs.id);
+                                    print(gender);
+                                    print(typeOfClothes);
+                                    print(sizeOfClothes);
+                                    print(titleController.text);
+                                    print(locationController.text);
+                                    print(deliver);
+                                  } else {
+                                    Fluttertoast.showToast(
+                                        msg: 'no Internet',
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.SNACKBAR,
+                                        timeInSecForIosWeb: 3,
+                                        backgroundColor:
+                                            Constants.primaryAppColor,
+                                        textColor: Constants.white,
+                                        fontSize: 16.0);
+                                  }
+                                }
+                              });
+                            },
+                          );
+                        }
+                      }),
+                    ),
                   ],
                 ),
               ),

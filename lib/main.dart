@@ -15,6 +15,8 @@ import 'package:flutter_graduation/View/screens/SideMenu_Screens/side_menu_scree
 import 'package:hexcolor/hexcolor.dart';
 import 'Data/Cubit/app_cubit/app_cubit.dart';
 import 'Data/Cubit/app_cubit/app_state.dart';
+import 'Data/Cubit/clothes_donation_cubit/clothes_donation_cubit.dart';
+import 'Data/Cubit/food_donation_cubit/food_donation_cubit.dart';
 import 'Data/Cubit/forget_pass_cubit/forget_pass_cubit.dart';
 import 'Data/Cubit/login_cubit/login_cubit.dart';
 import 'Data/Cubit/logout_cubit/logout_cubit.dart';
@@ -46,8 +48,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<ForgetPassCubit>(create: (context) => ForgetPassCubit()),
         BlocProvider<ResetPassCubit>(create: (context) => ResetPassCubit()),
         BlocProvider<FoodRequestCubit>(create: (context) => FoodRequestCubit()),
+        BlocProvider<FoodRequestCubit2>(
+            create: (context) => FoodRequestCubit2()),
         BlocProvider<ClothesRequestCubit>(
             create: (context) => ClothesRequestCubit()),
+        BlocProvider<ClothesRequestCubit2>(
+            create: (context) => ClothesRequestCubit2()),
         BlocProvider<LogoutCubit>(create: (context) => LogoutCubit()),
         BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
         BlocProvider<SignUpCubit>(create: (context) => SignUpCubit()),
@@ -66,7 +72,7 @@ class MyApp extends StatelessWidget {
                 drawerTheme: DrawerThemeData(
                   backgroundColor: HexColor('#F4F6F7'),
                 ),
-                primarySwatch: Colors.green,
+             //   primarySwatch: Colors.green,
                 scaffoldBackgroundColor: Colors.white,
                 appBarTheme: const AppBarTheme(
                     titleSpacing: 20.0,

@@ -14,12 +14,10 @@ class AppCubit extends Cubit<AppStates> {
   List<Widget> screens = [
     const Donation(),
     const Request(),
-    ContactUsScreen(),
   ];
   List<String> title = [
     'DONATION',
     'REQUEST',
-    'CONTACTUS',
   ];
 
   void changeIndex(int index) {

@@ -6,7 +6,7 @@ import 'Clothes_Request_state.dart';
 
 class ClothesRequestCubit extends Cubit<ClothesRequestState> {
   ClothesRequestCubit() : super(ClothesRequestInitial());
-  HomeRepo requestRepo = HomeRepo();
+  HomeRepo homeRepo = HomeRepo();
   ClothesRequestModel? requestClothes({
     String? gender,
     String? type,
@@ -19,7 +19,7 @@ class ClothesRequestCubit extends Cubit<ClothesRequestState> {
   }) {
     try {
       emit(ClothesRequestLoading());
-      requestRepo
+      homeRepo
           .requestClothes(
               type: type,
               gender: gender,

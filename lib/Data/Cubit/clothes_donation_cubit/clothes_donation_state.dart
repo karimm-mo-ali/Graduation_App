@@ -1,14 +1,14 @@
-import '../../Models/Home_Models/clothes_Donation_model.dart';
+import '../../Models/Home_Models/clothes_request_model.dart';
 
-abstract class ClothesDonationState {}
+abstract class ClothesRequestState2 {}
 
-class ClothesDonationInitial extends ClothesDonationState {}
+class ClothesRequestInitial2 extends ClothesRequestState2 {}
 
-class ClothesDonationLoading extends ClothesDonationState {}
+class ClothesRequestLoading2 extends ClothesRequestState2 {}
 
-class ClothesDonationLoaded extends ClothesDonationState {
-  ClothesDonationModel response;
-  ClothesDonationLoaded(this.response);
+class ClothesRequestLoaded2 extends ClothesRequestState2 {
+  ClothesRequestModel response;
+  ClothesRequestLoaded2(this.response);
 }
 
-class ClothesDonationError extends ClothesDonationState {}
+class ClothesRequestError2 extends ClothesRequestState2 {}

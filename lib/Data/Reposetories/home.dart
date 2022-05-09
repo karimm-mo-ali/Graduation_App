@@ -129,7 +129,7 @@ class HomeRepo {
   }
 
   ///Create Food Donation Cycle
-  Future<FoodDonationModel?> donateFood({
+  Future<FoodRequestModel?> donateFood({
     String? type,
     String? foodSource,
     String? typeFood,
@@ -157,7 +157,7 @@ class HomeRepo {
       Map<String, dynamic> responseMap = json.decode(response.body);
       if (response.statusCode == 200 && responseMap["status"] == true) {
         final insertFoodDonation =
-            FoodDonationModel.fromJson(jsonDecode(response.body));
+        FoodRequestModel.fromJson(jsonDecode(response.body));
         Fluttertoast.showToast(
             msg: responseMap["msg"],
             toastLength: Toast.LENGTH_SHORT,
@@ -187,7 +187,7 @@ class HomeRepo {
   }
 
   ///Create Clothes Donation Cycle
-  Future<ClothesDonationModel?> donateClothes({
+  Future<ClothesRequestModel?> donateClothes({
     String? gender,
     String? type,
     String? size,
@@ -211,7 +211,7 @@ class HomeRepo {
       Map<String, dynamic> responseMap = json.decode(response.body);
       if (response.statusCode == 200 && responseMap["status"] == true) {
         final insertClothesDonation =
-            ClothesDonationModel.fromJson(jsonDecode(response.body));
+        ClothesRequestModel.fromJson(jsonDecode(response.body));
         Fluttertoast.showToast(
             msg: responseMap["msg"],
             toastLength: Toast.LENGTH_SHORT,

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_graduation/helpers/myApplication.dart';
 import '../../../Data/Cubit/app_cubit/app_cubit.dart';
 import '../../../Data/Cubit/app_cubit/app_state.dart';
+import '../../../Style/Colors.dart';
 import '../SideMenu_Screens/instructions_screen.dart';
 
 class Request extends StatelessWidget {
@@ -46,12 +47,12 @@ class Request extends StatelessWidget {
                           TextButton(
                               onPressed: () => MyApplication.navigateTo(
                                   context, RequestFood()),
-                              child: const Text(
+                              child:  Text(
                                 'FOOD',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0,
-                                    color: Colors.green),
+                                    color:  Constants.primaryAppColor),
                               )),
                           const SizedBox(
                             width: 20.0,
@@ -59,12 +60,12 @@ class Request extends StatelessWidget {
                           TextButton(
                               onPressed: () => MyApplication.navigateTo(
                                   context, RequestClothes()),
-                              child: const Text(
+                              child:  Text(
                                 'CLOTHES',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0,
-                                    color: Colors.green),
+                                    color:  Constants.primaryAppColor),
                               )),
                         ],
                       ),
@@ -96,10 +97,10 @@ class Request extends StatelessWidget {
                           TextButton(
                               onPressed: () => MyApplication.navigateTo(
                                   context, InstructionsScreen()),
-                              child: const Text(
+                              child: Text(
                                 'Here',
                                 style: TextStyle(
-                                  color: Colors.green,
+                                  color:  Constants.primaryAppColor,
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.bold,
                                 ),

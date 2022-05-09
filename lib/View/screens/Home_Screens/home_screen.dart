@@ -1,6 +1,7 @@
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_graduation/Style/Colors.dart';
 import '../../../Data/Cubit/app_cubit/app_cubit.dart';
 import '../../../Data/Cubit/app_cubit/app_state.dart';
 
@@ -50,7 +51,8 @@ class Home extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
-            items: const [
+            selectedItemColor:  Constants.primaryAppColor,
+            items:  [
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.touch_app_rounded,
@@ -58,6 +60,7 @@ class Home extends StatelessWidget {
                 label: 'DONATE',
               ),
               BottomNavigationBarItem(
+                backgroundColor: Constants.primaryAppColor,
                 icon: Icon(
                   Icons.hail_rounded,
                 ),
@@ -71,7 +74,7 @@ class Home extends StatelessWidget {
               // ),
             ],
             type: BottomNavigationBarType.fixed,
-            elevation: 50.0,
+            // elevation: 200.0,
             currentIndex: cubit.currentIndex,
             onTap: (index) {
               AppCubit.get(context).changeIndex(index);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_graduation/Style/Colors.dart';
 import 'package:flutter_graduation/View/screens/Home_Screens/donate_clothes.dart';
 import 'package:flutter_graduation/View/screens/Home_Screens/donate_food.dart';
 import '../../../helpers/myApplication.dart';
@@ -38,12 +39,12 @@ class Donation extends StatelessWidget {
                     TextButton(
                         onPressed: () =>
                             MyApplication.navigateTo(context, DonationFood()),
-                        child: const Text(
+                        child:  Text(
                           'FOOD',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
-                              color: Colors.green),
+                              color: Constants.primaryAppColor),
                         )),
                     const SizedBox(
                       width: 20.0,
@@ -51,12 +52,12 @@ class Donation extends StatelessWidget {
                     TextButton(
                         onPressed: () => MyApplication.navigateTo(
                             context, DonationClothes()),
-                        child: const Text(
+                        child:  Text(
                           'CLOTHES',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
-                              color: Colors.green),
+                              color: Constants.primaryAppColor),
                         )),
                   ],
                 ),
@@ -88,10 +89,10 @@ class Donation extends StatelessWidget {
                     TextButton(
                         onPressed: () => MyApplication.navigateTo(
                             context, InstructionsScreen()),
-                        child: const Text(
+                        child:  Text(
                           'Here',
                           style: TextStyle(
-                            color: Colors.green,
+                            color:  Constants.primaryAppColor,
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                           ),

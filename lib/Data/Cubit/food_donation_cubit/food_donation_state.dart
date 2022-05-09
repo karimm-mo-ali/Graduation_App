@@ -1,14 +1,14 @@
-import '../../Models/Home_Models/Food_Donation_model.dart';
+import '../../Models/Home_Models/food_request_model.dart';
 
-abstract class FoodDonationState {}
+abstract class FoodRequestState2 {}
 
-class FoodDonationInitial extends FoodDonationState {}
+class FoodRequestInitial2 extends FoodRequestState2 {}
 
-class FoodDonationLoading extends FoodDonationState {}
+class FoodRequestLoading2 extends FoodRequestState2 {}
 
-class FoodDonationLoaded extends FoodDonationState {
-  FoodDonationModel response;
-  FoodDonationLoaded(this.response);
+class FoodRequestLoaded2 extends FoodRequestState2 {
+  FoodRequestModel response;
+  FoodRequestLoaded2(this.response);
 }
 
-class FoodDonationError extends FoodDonationState {}
+class FoodRequestError2 extends FoodRequestState2 {}

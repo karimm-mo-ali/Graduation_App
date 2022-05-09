@@ -467,7 +467,7 @@ class _RequestClothesState extends State<RequestClothes> {
                                     print(sharedPrefs.id);
                                     print(gender);
                                     print(typeOfClothes);
-                                    print(size);
+                                    print(sizeOfClothes);
                                     print(titleController.text);
                                     print(locationController.text);
                                     print(addressController.text);

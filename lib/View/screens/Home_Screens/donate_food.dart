@@ -8,6 +8,8 @@ import '../../../Data/Cubit/app_cubit/app_cubit.dart';
 import '../../../Data/Cubit/app_cubit/app_state.dart';
 import '../../../Data/Cubit/food_donation_cubit/food_donation_cubit.dart';
 import '../../../Data/Cubit/food_donation_cubit/food_donation_state.dart';
+import '../../../Data/Cubit/food_request_cubit/food_request_cubit.dart';
+import '../../../Data/Cubit/food_request_cubit/food_request_state.dart';
 import '../../../Style/Colors.dart';
 import '../../../helpers/myApplication.dart';
 import '../../widgets/btn_widget.dart';
@@ -116,7 +118,7 @@ class _DonationFoodState extends State<DonationFood> {
           appBar: AppBar(
             centerTitle: true,
             title: const Text(
-              'Food Request',
+              'Food Donation',
               style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),
             ),
           ),
@@ -595,11 +597,64 @@ class _DonationFoodState extends State<DonationFood> {
                         ],
                       ),
                     ),
-                    BtnWidget(
-                      txt: "Done",
-                      color: Constants.primaryAppColor,
-                      onClicked: () {},
+                    Center(
+                      child: BlocBuilder<FoodRequestCubit2, FoodRequestState2>(
+                          builder: (context, state) {
+                        if (state is FoodRequestLoading2) {
+                          return SpinKitThreeBounce(
+                            color: Constants.primaryAppColor,
+                            size: size.width * .08,
+                          );
+                        } else {
+                          return BtnWidget(
+                            txt: "Done",
+                            color: Constants.primaryAppColor,
+                            onClicked: () {
+                              MyApplication.checkConnection().then((value) {
+                                if (formKey.currentState!.validate()) {
+                                  if (value == true) {
+                                    BlocProvider.of<FoodRequestCubit2>(context)
+                                        .donateFood(
+                                            type: type,
+                                            foodSource: foodSource,
+                                            typeFood: typeOfFood,
+                                            expDate: dateController.text,
+                                            typeQuantity: typeOfQuantity,
+                                            quantity: titleController.text,
+                                            deliveryType: deliver,
+                                            location: locationController.text,
+                                            context: context);
+                                    print(sharedPrefs.id);
+                                    print(type);
+                                    print(foodSource);
+                                    print(typeOfFood);
+                                    print(dateController.text);
+                                    print(typeOfQuantity);
+                                    print(titleController.text);
+                                    print(locationController.text);
+                                  } else {
+                                    Fluttertoast.showToast(
+                                        msg: 'no Internet',
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.SNACKBAR,
+                                        timeInSecForIosWeb: 3,
+                                        backgroundColor:
+                                            Constants.primaryAppColor,
+                                        textColor: Constants.white,
+                                        fontSize: 16.0);
+                                  }
+                                }
+                              });
+                            },
+                          );
+                        }
+                      }),
                     ),
+                    // BtnWidget(
+                    //   txt: "Done",
+                    //   color: Constants.primaryAppColor,
+                    //   onClicked: () {},
+                    // ),
                     // Center(
                     //   child: BlocBuilder<FoodDonationCubit, FoodDonationState>(
                     //       builder: (context, state) {
