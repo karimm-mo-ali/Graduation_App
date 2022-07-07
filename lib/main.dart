@@ -9,6 +9,8 @@ import 'package:flutter_graduation/Data/Cubit/food_request_cubit/food_request_cu
 import 'package:flutter_graduation/Data/Cubit/profile_info_cubit/profile_info_cubit.dart';
 import 'package:flutter_graduation/Data/Cubit/reset_pass_cubit/reset_pass_cubit.dart';
 import 'package:flutter_graduation/Data/Cubit/signUp_cubit/signUP_cubit.dart';
+import 'package:flutter_graduation/Firebase_Screens/analytics_service.dart';
+import 'package:flutter_graduation/Firebase_Screens/locaor.dart';
 import 'package:flutter_graduation/View/screens/Auth_Screens/login_screen.dart';
 import 'package:flutter_graduation/View/screens/Auth_Screens/splash_screen.dart';
 import 'package:flutter_graduation/View/screens/SideMenu_Screens/side_menu_screen.dart';
@@ -21,6 +23,7 @@ import 'Data/Cubit/forget_pass_cubit/forget_pass_cubit.dart';
 import 'Data/Cubit/login_cubit/login_cubit.dart';
 import 'Data/Cubit/logout_cubit/logout_cubit.dart';
 import 'View/screens/Home_Screens/home_screen.dart';
+import 'View/screens/SideMenu_Screens/settings_screen.dart';
 import 'app/cache_helper.dart';
 import 'helpers/sharedPreference.dart';
 
@@ -28,6 +31,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
   await sharedPrefs.init();
+  setupLocator();
   bool? isDark = CacheHelper.getBoolean(key: 'isDark');
   runApp(MyApp(isDark));
 }
@@ -68,6 +72,10 @@ class MyApp extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
+
+            navigatorObservers: [
+              locator<AnalyticsService>().getAnalyticsObserver()
+            ],
             theme: ThemeData(
                 drawerTheme: DrawerThemeData(
                   backgroundColor: HexColor('#F4F6F7'),
@@ -155,8 +163,8 @@ class MyApp extends StatelessWidget {
             themeMode:
                 AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
             home: sharedPrefs.token != "" && sharedPrefs.getSignedIn()
-                ? SideMenuScreen()
-                : SplashScreen(),
+                ? Home()
+                : Home(),
             debugShowCheckedModeBanner: false,
           );
         },

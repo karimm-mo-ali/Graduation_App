@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_graduation/Style/Colors.dart';
 import '../../../Data/Cubit/app_cubit/app_cubit.dart';
 import '../../../Data/Cubit/app_cubit/app_state.dart';
+import '../SideMenu_Screens/side_menu_screen.dart';
 
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
@@ -16,33 +17,33 @@ class Home extends StatelessWidget {
       builder: (context, states) {
         AppCubit cubit = AppCubit.get(context);
         return Scaffold(
-          // appBar: AppBar(
-          //   leading: IconButton(
-          //     onPressed: () {
-          //       // Navigator.pushReplacement(context,
-          //       //     MaterialPageRoute(builder: (context) {
-          //       //       return DrawerWidget();
-          //       //     }));
-          //     },
-          //     icon: Icon(Icons.menu,
-          //         color:
-          //             AppCubit.get(context).isDark ? Colors.white : Colors.black),
-          //   ),
-          //   actions: [
-          //     Padding(
-          //       padding: const EdgeInsets.all(8.0),
-          //       child: IconButton(
-          //         onPressed: () {
-          //           AppCubit.get(context).changeAppMode();
-          //         },
-          //         icon: Icon(Icons.brightness_4_outlined,
-          //             color: AppCubit.get(context).isDark
-          //                 ? Colors.white
-          //                 : Colors.black),
-          //       ),
-          //     ),
-          //   ],
-          // ),
+           /*appBar: AppBar(
+             leading: IconButton(
+               onPressed: () {
+                 Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) {
+                       return SideMenuScreen();
+              }));
+               },
+               icon: Icon(Icons.menu,
+                   color:
+                       AppCubit.get(context).isDark ? Colors.white : Colors.black),
+             ),
+             actions: [
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: IconButton(
+                  onPressed: () {
+                     AppCubit.get(context).changeAppMode();
+                   },
+                   icon: Icon(Icons.brightness_4_outlined,
+                       color: AppCubit.get(context).isDark
+                         ? Colors.white
+                           : Colors.black),
+               ),
+               ),
+            ],
+           ),*/
           body: ConditionalBuilder(
             condition: true,
             builder: (context) => cubit.screens[cubit.currentIndex],
