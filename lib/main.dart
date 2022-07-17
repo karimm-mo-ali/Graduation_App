@@ -160,8 +160,8 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            themeMode:
-                AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+            themeMode:ThemeMode.light,
+                //AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
             home: sharedPrefs.token != "" && sharedPrefs.getSignedIn()
                 ? Home()
                 : Home(),

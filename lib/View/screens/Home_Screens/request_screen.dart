@@ -2,6 +2,8 @@ import 'package:flutter_graduation/View/screens/Home_Screens/request_clothes.dar
 import 'package:flutter_graduation/View/screens/Home_Screens/request_food.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_graduation/View/screens/New_Request_Screens/new_request_clothes.dart';
+import 'package:flutter_graduation/View/screens/New_Request_Screens/new_request_food.dart';
 import 'package:flutter_graduation/helpers/myApplication.dart';
 import '../../../Data/Cubit/app_cubit/app_cubit.dart';
 import '../../../Data/Cubit/app_cubit/app_state.dart';
@@ -46,7 +48,7 @@ class Request extends StatelessWidget {
                         children: [
                           TextButton(
                               onPressed: () => MyApplication.navigateTo(
-                                  context, RequestFood()),
+                                  context, FoodRequest()),
                               child:  Text(
                                 'FOOD',
                                 style: TextStyle(
@@ -59,7 +61,7 @@ class Request extends StatelessWidget {
                           ),
                           TextButton(
                               onPressed: () => MyApplication.navigateTo(
-                                  context, RequestClothes()),
+                                  context, ClothesRequest()),
                               child:  Text(
                                 'CLOTHES',
                                 style: TextStyle(
