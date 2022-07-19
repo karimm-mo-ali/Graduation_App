@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graduation/View/screens/New_Request_Screens/map_utils.dart';
 import 'package:flutter_graduation/View/screens/New_Request_Screens/new_request_cubit.dart';
+import 'package:flutter_graduation/View/screens/New_Request_Screens/send_screen.dart';
+import 'package:flutter_graduation/View/widgets/reusable_component.dart';
 
 Widget buildRequestFoodItem(context, {
   int counter =0,
@@ -12,19 +14,19 @@ Widget buildRequestFoodItem(context, {
 
 })=>InkWell(
   onTap:() async {
-    MapUtils.openMap(30.6158239, 31.1137432);
+    navigateAndFinish(context, SendScreen());
   } ,
   child:   Container(
     alignment: Alignment.center,
     margin: const EdgeInsets.all(10),
-    height: 150,
+    height: 140,
     width:double.infinity,
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(30), //border corner radius
       boxShadow:[
         BoxShadow(
-          color: Colors.green.withOpacity(0.3), //color of shadow
+          color: Colors.green.withOpacity(0.5), //color of shadow
           spreadRadius: 5, //spread radius
           blurRadius: 7, // blur radius
           offset: const Offset(0, 2), // changes position of shadow
@@ -162,7 +164,7 @@ Widget buildRequestClothesItem(context, {
 
 })=>InkWell (
   onTap:() async {
-    MapUtils.openMap(30.6158239, 31.1137432);
+    navigateAndFinish(context, SendScreen());
   } ,
   child:Container(
     alignment: Alignment.center,
@@ -263,6 +265,35 @@ Widget buildRequestClothesItem(context, {
 
 
         ],
+      ),
+    ),
+  ),
+);
+
+
+//Button
+
+Widget defaultButton({
+  double? height ,
+  double width=double.infinity,
+  Color backgroundColor =Colors.green,
+  required Function onPressed ,
+  required String buttonCalled ,
+  bool isUpperCase=true,
+})=>  Container(
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(20.0),
+    color:backgroundColor,
+  ),
+  width: width,
+  height: height,
+  child: MaterialButton(
+    onPressed: onPressed(),
+    child: Text(
+      buttonCalled.toUpperCase(),
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
       ),
     ),
   ),

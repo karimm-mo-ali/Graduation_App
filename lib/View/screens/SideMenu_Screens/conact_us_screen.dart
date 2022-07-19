@@ -53,10 +53,10 @@ class ContactUsScreen extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * .02, bottom: size.height * .05),
+                        top: size.height * .0001, bottom: size.height * .00001),
                     child: Center(
-                      child: Image.asset("assets/logo.png",
-                          height: size.height * 0.2),
+                      child: Image.asset("assets/logo3.jpg",
+                          height: size.height * 0.4),
                     ),
                   ),
                   Padding(
@@ -163,6 +163,10 @@ class ContactUsScreen extends StatelessWidget {
                             }
                           }),
                         ),
+
+                        SizedBox(
+                          height: 40.0,
+                        )
                       ],
                     ),
                   ),

@@ -1,3 +1,5 @@
+
+
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +31,13 @@ class FoodRequest extends StatelessWidget {
 
 
             return Scaffold(
-              appBar: AppBar(),
+              appBar: AppBar(
+                centerTitle: true,
+                title: const Text(
+                  ' Food Request',
+                  style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),
+                ),
+              ),
               body: ConditionalBuilder(
                   condition: true,
                   builder: (context)=>ListView.separated(

@@ -26,7 +26,13 @@ class ClothesRequest extends StatelessWidget {
 
 
             return Scaffold(
-              appBar: AppBar(),
+                appBar: AppBar(
+                  centerTitle: true,
+                  title: const Text(
+                    ' Clothes Request',
+                    style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
               body: ConditionalBuilder(
                   condition: true,
                   builder: (context)=>ListView.separated(
