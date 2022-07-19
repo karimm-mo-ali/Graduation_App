@@ -1,2 +1,2 @@
-const String apiKey = 'https://haidymohamed.000webhostapp.com/api';
+const String apiKey = 'https://fi-alkhair.webautobazaar.com/api';
 String? selectedLang = "en";

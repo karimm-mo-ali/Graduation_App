@@ -24,7 +24,7 @@ Widget buildRequestFoodItem(context, {
       borderRadius: BorderRadius.circular(30), //border corner radius
       boxShadow:[
         BoxShadow(
-          color: Colors.grey.withOpacity(0.5), //color of shadow
+          color: Colors.green.withOpacity(0.3), //color of shadow
           spreadRadius: 5, //spread radius
           blurRadius: 7, // blur radius
           offset: const Offset(0, 2), // changes position of shadow
@@ -174,7 +174,7 @@ Widget buildRequestClothesItem(context, {
       borderRadius: BorderRadius.circular(30), //border corner radius
       boxShadow:[
         BoxShadow(
-          color: Colors.grey.withOpacity(0.5), //color of shadow
+          color: Colors.green.withOpacity(0.5), //color of shadow
           spreadRadius: 5, //spread radius
           blurRadius: 7, // blur radius
           offset: const Offset(0, 2), // changes position of shadow

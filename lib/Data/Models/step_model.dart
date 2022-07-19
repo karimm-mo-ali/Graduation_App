@@ -7,16 +7,16 @@ class StepModel {
   static List<StepModel> list = [
     StepModel(
       image: 'assets/onboard_1.jpg',
-      text: "Browse the menu\nand order directly from\nthe application",
+      text: "Uing our \napp for helping \nneedy people",
     ),
     StepModel(
       image: 'assets/onboarding2.jpg',
       text:
-          "Your order will be\nimmediately collected and\nsent by our courier",
+          "Donate as fast as \nto save poorly people\nin every where",
     ),
     StepModel(
       image: 'assets/onboarding3.jpg',
-      text: "Pick update delivery\nat your door and enjoy\ngroceries",
+      text: "Lets start \nwith FiAlkhar to help\n needy people",
     ),
   ];
 }

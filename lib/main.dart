@@ -11,9 +11,7 @@ import 'package:flutter_graduation/Data/Cubit/reset_pass_cubit/reset_pass_cubit.
 import 'package:flutter_graduation/Data/Cubit/signUp_cubit/signUP_cubit.dart';
 import 'package:flutter_graduation/Firebase_Screens/analytics_service.dart';
 import 'package:flutter_graduation/Firebase_Screens/locaor.dart';
-import 'package:flutter_graduation/View/screens/Auth_Screens/login_screen.dart';
 import 'package:flutter_graduation/View/screens/Auth_Screens/splash_screen.dart';
-import 'package:flutter_graduation/View/screens/SideMenu_Screens/side_menu_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Data/Cubit/app_cubit/app_cubit.dart';
 import 'Data/Cubit/app_cubit/app_state.dart';
@@ -23,7 +21,6 @@ import 'Data/Cubit/forget_pass_cubit/forget_pass_cubit.dart';
 import 'Data/Cubit/login_cubit/login_cubit.dart';
 import 'Data/Cubit/logout_cubit/logout_cubit.dart';
 import 'View/screens/Home_Screens/home_screen.dart';
-import 'View/screens/SideMenu_Screens/settings_screen.dart';
 import 'app/cache_helper.dart';
 import 'helpers/sharedPreference.dart';
 
@@ -163,8 +160,8 @@ class MyApp extends StatelessWidget {
             themeMode:ThemeMode.light,
                 //AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
             home: sharedPrefs.token != "" && sharedPrefs.getSignedIn()
-                ? Home()
-                : Home(),
+                ? SplashScreen()
+                : SplashScreen(),
             debugShowCheckedModeBanner: false,
           );
         },
