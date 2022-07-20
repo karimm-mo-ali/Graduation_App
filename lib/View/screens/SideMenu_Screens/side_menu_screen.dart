@@ -212,10 +212,10 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     return Positioned(
       right: 50,
       left: 50,
-      bottom: 100,
+      bottom: 50,
       child: Opacity(
         opacity: 0.5,
-        child: Image.asset("assets/logo.png", height: 200),
+        child: Image.asset("assets/logo3.jpg", height: 300),
       ),
     );
   }
