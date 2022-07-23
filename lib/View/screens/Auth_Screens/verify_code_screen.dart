@@ -117,12 +117,15 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen>
                 children: [
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * .1, bottom: size.height * .05),
+                        top: size.height * .1, bottom: size.height * .001),
                     child: Center(
-                      child: Image.asset("assets/logo.png",
-                          height: size.height * 0.2),
+                      child: Image.asset("assets/logo3.jpg",
+                          height: size.height * 0.3),
                     ),
                   ),
+
+
+
                   Container(
                     margin: EdgeInsets.only(top: size.height * .05, bottom: 10),
                     child: Center(
