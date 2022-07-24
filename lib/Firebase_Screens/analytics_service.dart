@@ -7,5 +7,4 @@ class AnalyticsService {
   Future setUserProperties ({required String userId})async{
     await _analytics.setUserId(userId);
   }
-
 }
