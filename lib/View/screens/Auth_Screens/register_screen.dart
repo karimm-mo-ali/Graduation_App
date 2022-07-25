@@ -265,7 +265,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             context: context,
                                           );
                                           Navigator.of(context)
-                                              .pushNamed('Login');
+                                              .pushNamed('Home');
                                         } else {
                                           Fluttertoast.showToast(
                                               msg: 'no Internet',

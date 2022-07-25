@@ -15,6 +15,7 @@ import 'package:flutter_graduation/Firebase_Screens/analytics_service.dart';
 import 'package:flutter_graduation/Firebase_Screens/locaor.dart';
 import 'package:flutter_graduation/View/screens/Auth_Screens/login_screen.dart';
 import 'package:flutter_graduation/View/screens/Auth_Screens/splash_screen.dart';
+import 'package:flutter_graduation/View/screens/Home_Screens/home_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Data/Cubit/app_cubit/app_cubit.dart';
 import 'Data/Cubit/app_cubit/app_state.dart';
@@ -162,7 +163,7 @@ class MyApp extends StatelessWidget {
             ),
             themeMode: ThemeMode.light,
             routes: {
-              "Login": (context) => LoginScreen(),
+              "Home": (context) => Home(),
             },
             //AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
             home: sharedPrefs.token != "" && sharedPrefs.getSignedIn()
