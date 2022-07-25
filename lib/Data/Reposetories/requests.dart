@@ -1,27 +1,26 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter_graduation/Style/Colors.dart';
-import 'package:flutter_graduation/View/screens/New_Request_Screens/Request_Api/clothes_request_model.dart';
-import 'package:flutter_graduation/View/screens/New_Request_Screens/Request_Food_Api/food_request_model.dart';
+import 'package:flutter_graduation/Data/Models/Requests_Models/getClothes_request_model.dart';
+import 'package:flutter_graduation/Data/Models/Requests_Models/getFood_request_model.dart';
 import 'package:flutter_graduation/app/global.dart';
 import 'package:flutter_graduation/app/keys.dart';
-import 'package:flutter_graduation/helpers/sharedPreference.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
 
-class RequestRepo{
-  Future<NewClothesRequestModel?> getNewClothesRequest() async {
+class RequestRepo {
+  Future<GetClothesRequestsModel?> getClothesRequests() async {
     try {
-      var http;
       var response = await http.get(
-        Uri.parse('$apiKey/clothesdonte/get-clothesdonations/${sharedPrefs.id}'),
+        Uri.parse('$apiKey/clothesrequest/get-clothesrequests'),
         headers: headers,
       );
       Map<String, dynamic> responseMap = json.decode(response.body);
       print(responseMap.toString());
       if (response.statusCode == 200 && responseMap['status'] == true) {
-        final data = NewClothesRequestModel.fromJson(jsonDecode(response.body));
+        final data =
+            GetClothesRequestsModel.fromJson(jsonDecode(response.body));
         Fluttertoast.showToast(
             msg: responseMap["msg"],
             toastLength: Toast.LENGTH_SHORT,
@@ -45,22 +44,19 @@ class RequestRepo{
       print('Timeout Error: $e');
     } on SocketException catch (e) {
       print('Socket Error: $e');
-    } on Error catch (e) {
-      print('General Error: $e');
     }
   }
 
-  Future<NewFoodRequestModel?> getNewFoodRequest() async {
+  Future<GetFoodRequestsModel?> getFoodRequests() async {
     try {
-      var http;
       var response = await http.get(
-        Uri.parse('$apiKey/fooddonate/get-fooddonations/${sharedPrefs.id}'),
+        Uri.parse('$apiKey/foodrequest/get-foodrequests'),
         headers: headers,
       );
       Map<String, dynamic> responseMap = json.decode(response.body);
       print(responseMap.toString());
       if (response.statusCode == 200 && responseMap['status'] == true) {
-        final data = NewFoodRequestModel.fromJson(jsonDecode(response.body));
+        final data = GetFoodRequestsModel.fromJson(jsonDecode(response.body));
         Fluttertoast.showToast(
             msg: responseMap["msg"],
             toastLength: Toast.LENGTH_SHORT,

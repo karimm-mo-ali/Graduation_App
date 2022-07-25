@@ -157,7 +157,7 @@ class HomeRepo {
       Map<String, dynamic> responseMap = json.decode(response.body);
       if (response.statusCode == 200 && responseMap["status"] == true) {
         final insertFoodDonation =
-        FoodRequestModel.fromJson(jsonDecode(response.body));
+            FoodRequestModel.fromJson(jsonDecode(response.body));
         Fluttertoast.showToast(
             msg: responseMap["msg"],
             toastLength: Toast.LENGTH_SHORT,
@@ -211,7 +211,7 @@ class HomeRepo {
       Map<String, dynamic> responseMap = json.decode(response.body);
       if (response.statusCode == 200 && responseMap["status"] == true) {
         final insertClothesDonation =
-        ClothesRequestModel.fromJson(jsonDecode(response.body));
+            ClothesRequestModel.fromJson(jsonDecode(response.body));
         Fluttertoast.showToast(
             msg: responseMap["msg"],
             toastLength: Toast.LENGTH_SHORT,

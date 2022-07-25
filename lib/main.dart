@@ -8,6 +8,8 @@ import 'package:flutter_graduation/Data/Cubit/clothes_request_cubit/clothes_requ
 import 'package:flutter_graduation/Data/Cubit/contactUs_cubit/contactUs_cubit.dart';
 import 'package:flutter_graduation/Data/Cubit/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:flutter_graduation/Data/Cubit/food_request_cubit/food_request_cubit.dart';
+import 'package:flutter_graduation/Data/Cubit/getClothes_requests_cubit/getClothes_requests_cubit.dart';
+import 'package:flutter_graduation/Data/Cubit/getFood_requests_cubit/getFood_requests_cubit.dart';
 import 'package:flutter_graduation/Data/Cubit/profile_info_cubit/profile_info_cubit.dart';
 import 'package:flutter_graduation/Data/Cubit/reset_pass_cubit/reset_pass_cubit.dart';
 import 'package:flutter_graduation/Data/Cubit/signUp_cubit/signUP_cubit.dart';
@@ -59,6 +61,10 @@ class MyApp extends StatelessWidget {
             create: (context) => ClothesRequestCubit()),
         BlocProvider<ClothesRequestCubit2>(
             create: (context) => ClothesRequestCubit2()),
+        BlocProvider<GetClothesRequestsCubit>(
+            create: (context) => GetClothesRequestsCubit()),
+        BlocProvider<GetFoodRequestsCubit>(
+            create: (context) => GetFoodRequestsCubit()),
         BlocProvider<LogoutCubit>(create: (context) => LogoutCubit()),
         BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
         BlocProvider<SignUpCubit>(create: (context) => SignUpCubit()),
