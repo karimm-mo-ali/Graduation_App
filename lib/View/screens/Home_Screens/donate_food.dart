@@ -86,6 +86,16 @@ class _DonationFoodState extends State<DonationFood> {
   DateTime selectedDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
+        /**builder: (context, child) => Theme(
+        data: ThemeData().copyWith(
+          colorScheme: ColorScheme.light(
+            surface: Colors.green
+          )
+        ), child: child,
+
+
+      ),
+            **/
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(2015, 8),
@@ -320,6 +330,8 @@ class _DonationFoodState extends State<DonationFood> {
                       ),
                     ),
                     defaultLine(context),
+
+
                     //Expiration Date
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0, bottom: 30),
@@ -370,6 +382,7 @@ class _DonationFoodState extends State<DonationFood> {
                               labelText: 'Task Date',
                               prefixIcon: Icon(
                                 Icons.calendar_today,
+                                color: Colors.green,
                               ),
                             ),
                             onTap: () => _selectDate(context),

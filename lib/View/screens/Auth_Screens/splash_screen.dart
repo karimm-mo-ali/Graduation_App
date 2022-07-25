@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         width: double.infinity,
         color: Constants.primaryAppColor,
         child: Center(
-            child: Image.asset("assets/Logo.png", color: Constants.white)),
+            child: Image.asset("assets/logo.png", color: Constants.white)),
       ),
     );
   }

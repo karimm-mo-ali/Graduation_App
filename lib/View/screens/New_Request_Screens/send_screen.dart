@@ -8,9 +8,14 @@ import 'package:flutter_graduation/View/widgets/txtfield_widget.dart';
 import 'package:flutter_graduation/helpers/myApplication.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class SendScreen extends StatelessWidget {
+class SendScreen extends StatefulWidget {
   SendScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SendScreen> createState() => _SendScreenState();
+}
+
+class _SendScreenState extends State<SendScreen> {
   final TextEditingController locationTextEditingController =
   TextEditingController();
 
@@ -18,6 +23,12 @@ class SendScreen extends StatelessWidget {
   TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  String? valueChoose;
+
+  List<String> listItem=[
+    'Send Delegate','Deliver To Us',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -83,42 +94,67 @@ class SendScreen extends StatelessWidget {
                 ),
 
                 //buttons
-                BtnWidget(
-                txt: "Send Delegate",
-                color: Constants.primaryAppColor,
-                onClicked: () {
-                  MyApplication.checkConnection().then((value) {
-                    if (_formKey.currentState!.validate()) {
-                      Fluttertoast.showToast(
-                          msg: 'Request done Successfully',
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.SNACKBAR,
-                          timeInSecForIosWeb: 3,
-                          backgroundColor:
-                          Constants.primaryAppColor,
-                          textColor: Constants.white,
-                          fontSize: 16.0);
-                      navigateAndFinish(context, Home());
-                    }else{
-                      Fluttertoast.showToast(
-                          msg: 'Enter Locations',
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.SNACKBAR,
-                          timeInSecForIosWeb: 3,
-                          backgroundColor:
-                          Constants.primaryAppColor,
-                          textColor: Constants.white,
-                          fontSize: 16.0);
-                    }
-                  });
-                },
-              ),
+
+
+                const Text(
+                  'Deliver',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Center(
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.green, width: 1),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+
+                    child: DropdownButton<String>(
+                      hint: const Text('Select item',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.grey
+                        ),
+
+                      ),
+                      dropdownColor: Colors.white,
+                      icon: const Icon(
+                          Icons.arrow_drop_down
+                      ),
+                      iconSize: 36,
+                      isExpanded: true,
+                      underline: const SizedBox(),
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 18,
+                      ),
+                      value: valueChoose,
+                      onChanged: (newValue){
+                        setState(() {
+                          valueChoose=newValue;
+                        });
+                      },
+                      items: listItem.map((valueItem){
+                        return DropdownMenuItem(
+                          value: valueItem,
+                          child: Text(valueItem),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+
 
                 SizedBox(
                   height: 15,
                 ),
                 BtnWidget(
-                  txt: "Deliver To Us",
+                  txt: "Done",
                   color: Constants.primaryAppColor,
                   onClicked: () {
                     MyApplication.checkConnection().then((value) {

@@ -7,7 +7,7 @@ class StepModel {
   static List<StepModel> list = [
     StepModel(
       image: 'assets/onboard_1.jpg',
-      text: "Uisng our \napp for helping \nneedy people",
+      text: "Using our \napp for helping \nneedy people",
     ),
     StepModel(
       image: 'assets/onboarding2.jpg',

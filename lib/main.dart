@@ -13,7 +13,6 @@ import 'package:flutter_graduation/Data/Cubit/reset_pass_cubit/reset_pass_cubit.
 import 'package:flutter_graduation/Data/Cubit/signUp_cubit/signUP_cubit.dart';
 import 'package:flutter_graduation/Firebase_Screens/analytics_service.dart';
 import 'package:flutter_graduation/Firebase_Screens/locaor.dart';
-import 'package:flutter_graduation/View/screens/Auth_Screens/login_screen.dart';
 import 'package:flutter_graduation/View/screens/Auth_Screens/splash_screen.dart';
 import 'package:flutter_graduation/View/screens/Home_Screens/home_screen.dart';
 import 'package:hexcolor/hexcolor.dart';

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_graduation/View/screens/Home_Screens/home_screen.dart';
 import 'package:flutter_graduation/View/screens/SideMenu_Screens/aboutUs_screen.dart';
 import 'package:flutter_graduation/View/screens/SideMenu_Screens/settings_screen.dart';
+import 'package:flutter_graduation/app/webview_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../../Data/Cubit/logout_cubit/logout_cubit.dart';
@@ -255,9 +256,9 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
             padding: const EdgeInsets.symmetric(horizontal: 36.0, vertical: 16),
             child: InkWell(
               onTap: () => _menuTitles[i] == "About"
-                  ? MyApplication.navigateTo(context, AboutScreen())
+                  ? MyApplication.navigateTo(context, WebViewScreen('https://fi-alkhair.webautobazaar.com/en/lang/about'))
                   : _menuTitles[i] == "Instructions"
-                      ? MyApplication.navigateTo(context, InstructionsScreen())
+                      ? MyApplication.navigateTo(context,WebViewScreen('https://fi-alkhair.webautobazaar.com/en/lang/instructions'))
                       : _menuTitles[i] == "Settings"
                           ? MyApplication.navigateTo(context, SettingsScreen())
                           : _menuTitles[i] == "ContactUs"
