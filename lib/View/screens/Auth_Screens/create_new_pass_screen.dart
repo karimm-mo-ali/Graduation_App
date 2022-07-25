@@ -65,7 +65,7 @@ class _CreateNewPassScreenState extends State<CreateNewPassScreen>
                     margin: EdgeInsets.only(
                         top: size.height * .1, bottom: size.height * .05),
                     child: Center(
-                      child: Image.asset("assets/logo.png",
+                      child: Image.asset("assets/Logo.png",
                           height: size.height * 0.2),
                     ),
                   ),

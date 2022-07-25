@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +13,7 @@ import 'package:flutter_graduation/Data/Cubit/reset_pass_cubit/reset_pass_cubit.
 import 'package:flutter_graduation/Data/Cubit/signUp_cubit/signUP_cubit.dart';
 import 'package:flutter_graduation/Firebase_Screens/analytics_service.dart';
 import 'package:flutter_graduation/Firebase_Screens/locaor.dart';
+import 'package:flutter_graduation/View/screens/Auth_Screens/login_screen.dart';
 import 'package:flutter_graduation/View/screens/Auth_Screens/splash_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Data/Cubit/app_cubit/app_cubit.dart';
@@ -20,16 +23,17 @@ import 'Data/Cubit/food_donation_cubit/food_donation_cubit.dart';
 import 'Data/Cubit/forget_pass_cubit/forget_pass_cubit.dart';
 import 'Data/Cubit/login_cubit/login_cubit.dart';
 import 'Data/Cubit/logout_cubit/logout_cubit.dart';
-import 'View/screens/Home_Screens/home_screen.dart';
 import 'app/cache_helper.dart';
 import 'helpers/sharedPreference.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await CacheHelper.init();
   await sharedPrefs.init();
   setupLocator();
   bool? isDark = CacheHelper.getBoolean(key: 'isDark');
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   runApp(MyApp(isDark));
 }
 
@@ -69,7 +73,6 @@ class MyApp extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
-
             navigatorObservers: [
               locator<AnalyticsService>().getAnalyticsObserver()
             ],
@@ -77,7 +80,7 @@ class MyApp extends StatelessWidget {
                 drawerTheme: DrawerThemeData(
                   backgroundColor: HexColor('#F4F6F7'),
                 ),
-             //   primarySwatch: Colors.green,
+                //   primarySwatch: Colors.green,
                 scaffoldBackgroundColor: Colors.white,
                 appBarTheme: const AppBarTheme(
                     titleSpacing: 20.0,
@@ -157,8 +160,11 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            themeMode:ThemeMode.light,
-                //AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+            themeMode: ThemeMode.light,
+            routes: {
+              "Login": (context) => LoginScreen(),
+            },
+            //AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
             home: sharedPrefs.token != "" && sharedPrefs.getSignedIn()
                 ? SplashScreen()
                 : SplashScreen(),

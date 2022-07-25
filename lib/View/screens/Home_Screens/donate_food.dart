@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_graduation/helpers/sharedPreference.dart';
@@ -92,6 +93,7 @@ class _DonationFoodState extends State<DonationFood> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
+        //  FirebaseCrashlytics.instance.crash();
         print(selectedDate);
         final DateFormat formatter = DateFormat('yyyy-MM-dd');
         final String formatted = formatter.format(selectedDate);

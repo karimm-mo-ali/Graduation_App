@@ -47,12 +47,12 @@ class Request extends StatelessWidget {
                           TextButton(
                               onPressed: () => MyApplication.navigateTo(
                                   context, FoodRequest()),
-                              child:  Text(
+                              child: Text(
                                 'FOOD',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0,
-                                    color:  Constants.primaryAppColor),
+                                    color: Constants.primaryAppColor),
                               )),
                           const SizedBox(
                             width: 20.0,
@@ -60,12 +60,12 @@ class Request extends StatelessWidget {
                           TextButton(
                               onPressed: () => MyApplication.navigateTo(
                                   context, ClothesRequest()),
-                              child:  Text(
+                              child: Text(
                                 'CLOTHES',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0,
-                                    color:  Constants.primaryAppColor),
+                                    color: Constants.primaryAppColor),
                               )),
                         ],
                       ),
@@ -100,7 +100,7 @@ class Request extends StatelessWidget {
                               child: Text(
                                 'Here',
                                 style: TextStyle(
-                                  color:  Constants.primaryAppColor,
+                                  color: Constants.primaryAppColor,
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.bold,
                                 ),

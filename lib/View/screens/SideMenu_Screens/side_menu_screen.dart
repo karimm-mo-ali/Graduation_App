@@ -28,7 +28,6 @@ class _SideMenuScreenState extends State<SideMenuScreen>
   @override
   void initState() {
     super.initState();
-
     _drawerSlideController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 150),
@@ -158,7 +157,6 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-
     _createAnimationIntervals();
 
     _staggeredController = AnimationController(
@@ -261,8 +259,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                   : _menuTitles[i] == "Instructions"
                       ? MyApplication.navigateTo(context, InstructionsScreen())
                       : _menuTitles[i] == "Settings"
-                          ? MyApplication.navigateTo(
-                              context, SettingsScreen())
+                          ? MyApplication.navigateTo(context, SettingsScreen())
                           : _menuTitles[i] == "ContactUs"
                               ? MyApplication.navigateTo(
                                   context, ContactUsScreen())

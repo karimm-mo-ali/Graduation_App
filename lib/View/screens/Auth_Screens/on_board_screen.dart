@@ -1,4 +1,5 @@
 // ignore_for_file: deprecated_member_use
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import '../../../Data/Models/step_model.dart';
 import '../../../Style/Colors.dart';
@@ -103,7 +104,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   _controller.animateToPage(initialPage + 1,
                       duration: const Duration(microseconds: 500),
                       curve: Curves.easeIn);
-                  if (initialPage == 2) navigateAndFinish(context, const LoginScreen());
+                  if (initialPage == 2)
+                    navigateAndFinish(context, const LoginScreen());
                 }
               },
               child: Container(

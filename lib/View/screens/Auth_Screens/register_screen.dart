@@ -237,47 +237,49 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 txt: "Sign Up",
                                 color: Constants.primaryAppColor,
                                 onClicked: () {
-                                  MyApplication.checkConnection().then((value) {
-                                    if (_formKey.currentState!.validate()) {
-                                      if (value == true) {
-                                        BlocProvider.of<SignUpCubit>(context)
-                                            .signUp(
-                                                firstName:
-                                                    firstNameTextEditingController
-                                                        .text,
-                                                lastName:
-                                                    lastNameTextEditingController
-                                                        .text,
-                                                email:
-                                                    emailTextEditingController
-                                                        .text,
-                                                phone:
-                                                    phoneTextEditingController
-                                                        .text,
-                                                address:
-                                                    addressTextEditingController
-                                                        .text,
-                                                password:
-                                                    passTextEditingController
-                                                        .text,
-                                                gender: _selectedValue,
-                                                photo: File(_image != null
-                                                    ? _image!.path
-                                                    : ""),
-                                                context: context);
-                                      } else {
-                                        Fluttertoast.showToast(
-                                            msg: 'no Internet',
-                                            toastLength: Toast.LENGTH_SHORT,
-                                            gravity: ToastGravity.SNACKBAR,
-                                            timeInSecForIosWeb: 3,
-                                            backgroundColor:
-                                                Constants.primaryAppColor,
-                                            textColor: Constants.white,
-                                            fontSize: 16.0);
+                                  MyApplication.checkConnection().then(
+                                    (value) {
+                                      if (_formKey.currentState!.validate()) {
+                                        if (value == true) {
+                                          BlocProvider.of<SignUpCubit>(context)
+                                              .signUp(
+                                            firstName:
+                                                firstNameTextEditingController
+                                                    .text,
+                                            lastName:
+                                                lastNameTextEditingController
+                                                    .text,
+                                            email:
+                                                emailTextEditingController.text,
+                                            phone:
+                                                phoneTextEditingController.text,
+                                            address:
+                                                addressTextEditingController
+                                                    .text,
+                                            password:
+                                                passTextEditingController.text,
+                                            gender: _selectedValue,
+                                            photo: File(_image != null
+                                                ? _image!.path
+                                                : ""),
+                                            context: context,
+                                          );
+                                          Navigator.of(context)
+                                              .pushNamed('Login');
+                                        } else {
+                                          Fluttertoast.showToast(
+                                              msg: 'no Internet',
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              gravity: ToastGravity.SNACKBAR,
+                                              timeInSecForIosWeb: 3,
+                                              backgroundColor:
+                                                  Constants.primaryAppColor,
+                                              textColor: Constants.white,
+                                              fontSize: 16.0);
+                                        }
                                       }
-                                    }
-                                  });
+                                    },
+                                  );
                                 },
                               );
                             }
