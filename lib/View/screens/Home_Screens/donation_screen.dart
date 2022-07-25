@@ -3,6 +3,7 @@ import 'package:flutter_graduation/Style/Colors.dart';
 import 'package:flutter_graduation/View/screens/Home_Screens/donate_clothes.dart';
 import 'package:flutter_graduation/View/screens/Home_Screens/donate_food.dart';
 import '../../../helpers/myApplication.dart';
+import 'package:flutter_graduation/app/webview_screen.dart';
 import '../SideMenu_Screens/instructions_screen.dart';
 
 class Donation extends StatelessWidget {
@@ -39,7 +40,7 @@ class Donation extends StatelessWidget {
                     TextButton(
                         onPressed: () =>
                             MyApplication.navigateTo(context, DonationFood()),
-                        child:  Text(
+                        child: Text(
                           'FOOD',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -52,7 +53,7 @@ class Donation extends StatelessWidget {
                     TextButton(
                         onPressed: () => MyApplication.navigateTo(
                             context, DonationClothes()),
-                        child:  Text(
+                        child: Text(
                           'CLOTHES',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -88,11 +89,13 @@ class Donation extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () => MyApplication.navigateTo(
-                            context, InstructionsScreen()),
-                        child:  Text(
+                            context,
+                            WebViewScreen(
+                                'https://fi-alkhair.webautobazaar.com/en/lang/instructions')),
+                        child: Text(
                           'Here',
                           style: TextStyle(
-                            color:  Constants.primaryAppColor,
+                            color: Constants.primaryAppColor,
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                           ),

@@ -7,6 +7,7 @@ import '../../../Style/Colors.dart';
 import '../New_Request_Screens/new_request_clothes.dart';
 import '../New_Request_Screens/new_request_food.dart';
 import '../SideMenu_Screens/instructions_screen.dart';
+import 'package:flutter_graduation/app/webview_screen.dart';
 
 class Request extends StatelessWidget {
   const Request({Key? key}) : super(key: key);
@@ -96,7 +97,9 @@ class Request extends StatelessWidget {
                           ),
                           TextButton(
                               onPressed: () => MyApplication.navigateTo(
-                                  context, InstructionsScreen()),
+                                  context,
+                                  WebViewScreen(
+                                      'https://fi-alkhair.webautobazaar.com/en/lang/instructions')),
                               child: Text(
                                 'Here',
                                 style: TextStyle(

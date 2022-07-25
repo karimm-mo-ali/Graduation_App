@@ -331,7 +331,6 @@ class _DonationFoodState extends State<DonationFood> {
                     ),
                     defaultLine(context),
 
-
                     //Expiration Date
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0, bottom: 30),
@@ -380,9 +379,13 @@ class _DonationFoodState extends State<DonationFood> {
                                       color: Constants.primaryAppColor,
                                       width: 0.7)),
                               labelText: 'Task Date',
+                              labelStyle:
+                                  const TextStyle(color: Color(0xFF43494B)),
+                              floatingLabelStyle: const TextStyle(
+                                  color: Color.fromARGB(255, 56, 142, 60)),
                               prefixIcon: Icon(
                                 Icons.calendar_today,
-                                color: Colors.green,
+                                color: Color(0xFF43494B),
                               ),
                             ),
                             onTap: () => _selectDate(context),
@@ -477,8 +480,13 @@ class _DonationFoodState extends State<DonationFood> {
                                       color: Constants.primaryAppColor,
                                       width: 0.7)),
                               labelText: 'Quantity',
+                              labelStyle:
+                                  const TextStyle(color: Color(0xFF43494B)),
+                              floatingLabelStyle: const TextStyle(
+                                  color: Color.fromARGB(255, 56, 142, 60)),
                               prefixIcon: Icon(
                                 Icons.production_quantity_limits,
+                                color: Color(0xFF43494B),
                               ),
                             ),
                             validator: (String? value) {
@@ -535,9 +543,12 @@ class _DonationFoodState extends State<DonationFood> {
                                       color: Constants.primaryAppColor,
                                       width: 0.7)),
                               labelText: 'Location',
-                              prefixIcon: Icon(
-                                Icons.location_on,
-                              ),
+                              labelStyle:
+                                  const TextStyle(color: Color(0xFF43494B)),
+                              floatingLabelStyle: const TextStyle(
+                                  color: Color.fromARGB(255, 56, 142, 60)),
+                              prefixIcon: Icon(Icons.location_on,
+                                  color: Color(0xFF43494B)),
                             ),
                             validator: (String? value) {
                               if (value!.isEmpty) {
