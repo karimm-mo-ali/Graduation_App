@@ -158,31 +158,31 @@ class HomeRepo {
       if (response.statusCode == 200 && responseMap["status"] == true) {
         final insertFoodDonation =
             FoodRequestModel.fromJson(jsonDecode(response.body));
-        Fluttertoast.showToast(
-            msg: responseMap["msg"],
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.SNACKBAR,
-            timeInSecForIosWeb: 3,
-            backgroundColor: Constants.primaryAppColor,
-            textColor: Constants.white,
-            fontSize: 16.0);
+        // Fluttertoast.showToast(
+        //     msg: responseMap["msg"],
+        //     toastLength: Toast.LENGTH_SHORT,
+        //     gravity: ToastGravity.SNACKBAR,
+        //     timeInSecForIosWeb: 3,
+        //     backgroundColor: Constants.primaryAppColor,
+        //     textColor: Constants.white,
+        //     fontSize: 16.0);
         return insertFoodDonation;
       } else {
-        Fluttertoast.showToast(
-            msg: responseMap["msg"],
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.SNACKBAR,
-            timeInSecForIosWeb: 3,
-            backgroundColor: Constants.primaryAppColor,
-            textColor: Constants.white,
-            fontSize: 16.0);
+        print(responseMap["msg"]);
+        // Fluttertoast.showToast(
+        //     msg: responseMap["msg"],
+        //     toastLength: Toast.LENGTH_SHORT,
+        //     gravity: ToastGravity.SNACKBAR,
+        //     timeInSecForIosWeb: 3,
+        //     backgroundColor: Constants.primaryAppColor,
+        //     textColor: Constants.white,
+        //     fontSize: 16.0);
+
       }
     } on TimeoutException catch (e) {
       print('Timeout Error: $e');
     } on SocketException catch (e) {
       print('Socket Error: $e');
-    } on Error catch (e) {
-      print('General Error: $e');
     }
   }
 
@@ -212,24 +212,24 @@ class HomeRepo {
       if (response.statusCode == 200 && responseMap["status"] == true) {
         final insertClothesDonation =
             ClothesRequestModel.fromJson(jsonDecode(response.body));
-        Fluttertoast.showToast(
-            msg: responseMap["msg"],
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.SNACKBAR,
-            timeInSecForIosWeb: 3,
-            backgroundColor: Constants.primaryAppColor,
-            textColor: Constants.white,
-            fontSize: 16.0);
+      //  Fluttertoast.showToast(
+            // msg: responseMap["msg"],
+            // toastLength: Toast.LENGTH_SHORT,
+            // gravity: ToastGravity.SNACKBAR,
+            // timeInSecForIosWeb: 3,
+            // backgroundColor: Constants.primaryAppColor,
+            // textColor: Constants.white,
+            // fontSize: 16.0);
         return insertClothesDonation;
       } else {
-        Fluttertoast.showToast(
-            msg: responseMap["msg"],
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.SNACKBAR,
-            timeInSecForIosWeb: 3,
-            backgroundColor: Constants.primaryAppColor,
-            textColor: Constants.white,
-            fontSize: 16.0);
+        // Fluttertoast.showToast(
+        //     msg: responseMap["msg"],
+        //     toastLength: Toast.LENGTH_SHORT,
+        //     gravity: ToastGravity.SNACKBAR,
+        //     timeInSecForIosWeb: 3,
+        //     backgroundColor: Constants.primaryAppColor,
+        //     textColor: Constants.white,
+        //     fontSize: 16.0);
       }
     } on TimeoutException catch (e) {
       print('Timeout Error: $e');

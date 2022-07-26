@@ -32,6 +32,7 @@ class ClothesRequestCubit2 extends Cubit<ClothesRequestState2> {
           Navigator.pop(context!);
         } else {
           emit(ClothesRequestError2());
+          Navigator.pop(context!);
         }
       });
     } catch (e) {

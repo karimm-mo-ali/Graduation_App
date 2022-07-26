@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import '../../Models/Home_Models/food_request_model.dart';
 import '../../Reposetories/home.dart';
-import '../food_request_cubit/food_request_state.dart';
 import 'food_donation_state.dart';
 
 class FoodRequestCubit2 extends Cubit<FoodRequestState2> {
@@ -38,6 +37,7 @@ class FoodRequestCubit2 extends Cubit<FoodRequestState2> {
           Navigator.pop(context!);
         } else {
           emit(FoodRequestError2());
+          Navigator.pop(context!);
         }
       });
     } catch (e) {
